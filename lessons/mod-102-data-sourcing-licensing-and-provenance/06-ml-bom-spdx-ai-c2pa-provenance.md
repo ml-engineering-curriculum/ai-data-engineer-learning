@@ -169,15 +169,13 @@ For an AI Data Engineer the relevant pieces are:
 
 - Assets (images, video, audio) may carry an embedded C2PA manifest describing who created the asset, what camera / software produced it, what edits were applied, and — critically — whether the author asserted a `do-not-train` or similar AI-training reservation.
 - C2PA assertions are signed; verification is cryptographic.
-- The spec defines a vocabulary of assertions, including (as of the spec's current revision) AI-training-related assertions that let the publisher express a preference.
+- The spec defines a vocabulary of assertions, including AI-training-related assertions that let the publisher express a preference. The training-and-data-mining assertion was moved out of the core C2PA 2.x specification into a separate Creator Assertions Working Group (CAWG) specification; the current CAWG assertion is labelled `cawg.training-mining`, with per-use-category entries (`cawg.ai_training`, `cawg.ai_generative_training`, `cawg.data_mining`, `cawg.ai_inference`) taking the values `allowed`, `notAllowed`, or `constrained` (<https://cawg.io/training-and-data-mining/>).
 
 Pipeline consequences:
 
 - The ingest pipeline reads C2PA manifests on binary assets. The `OptOutEvaluator` from Chapter 03 treats a `do-not-train` assertion as a blocking signal.
 - The ML-BOM / SPDX AI records for the slice reference the C2PA manifests it consumed — this is the asset-level provenance link that composes with the source-level licence record.
 - When your own product emits generated content, C2PA Content Credentials are the format in which your organisation asserts that the content was AI-generated and by which model. Downstream consumers of your generated content will increasingly demand it.
-
-<!-- needs-research: verify the latest C2PA assertion vocabulary, in particular the current spec version's AI-training assertions (e.g. `c2pa.training.not-allowed`, `c2pa.training-mining.ai-generative` etc.) at read time — https://c2pa.org/specifications/. -->
 
 The ingest-side code pattern:
 

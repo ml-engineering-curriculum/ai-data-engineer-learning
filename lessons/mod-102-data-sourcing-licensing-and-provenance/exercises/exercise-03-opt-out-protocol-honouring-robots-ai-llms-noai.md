@@ -32,7 +32,7 @@ Your organisation operates a focused crawler identifying as `ExampleCorpCrawler/
 - `robots.txt` parsing is subtler than it looks: the "most specific user agent match" rule, path prefix matching, `$` anchor, and `*` wildcard semantics all have corner cases. Use (or re-implement) a tested parser; do not roll your own regex without tests.
 - `ai.txt` is not RFC-standardised; treat its format conservatively. Reject a file whose syntax you cannot parse unambiguously and log the rejection.
 - For meta tags, parse the HTML head only; do not pull in a full HTML renderer. `beautifulsoup4` or `lxml` are fine.
-- The IETF ai-pref working group's output may introduce a `/.well-known/ai-preferences` resource with structured HTTP headers. Design the chain so adding it is a new link, not a rewrite. <!-- needs-research: verify ai-pref status at implementation time. -->
+- The IETF ai-pref working group (active, drafts `draft-ietf-aipref-vocab` and `draft-ietf-aipref-attach`; see <https://datatracker.ietf.org/wg/aipref/about/> for current status) is expected to introduce a `/.well-known/ai-preferences` resource with structured HTTP headers. Design the chain so adding it is a new link, not a rewrite.
 - Distinguish your own user agent from the AI-specific tokens in robots.txt tests: a crawler identifying as `ExampleCorpCrawler/1.0` is *not* automatically denied by a `User-agent: GPTBot` block.
 - Do **not** spoof a browser user agent to bypass an AI-specific denial. The honour contract is the point of the exercise.
 

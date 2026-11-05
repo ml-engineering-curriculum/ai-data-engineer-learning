@@ -121,9 +121,7 @@ Which of these count as Article 4(3) reservation is a legal question — see Cha
 
 ## The IETF ai-pref working group
 
-The IETF **AI Preferences (ai-pref)** working group was chartered to develop standards-track mechanisms for expressing AI opt-in / opt-out preferences in a uniform way. At the time of this chapter's writing the WG has produced drafts covering a vocabulary of AI purposes, HTTP-header expression, and a `/.well-known/ai-preferences` URI. The direction of travel is toward a single, standards-track signal with explicit purpose-category granularity (training vs. retrieval vs. search indexing, for example).
-
-<!-- needs-research: at read time verify the current list of published RFCs, active I-Ds, and WG status for IETF ai-pref — https://datatracker.ietf.org/wg/aipref/about/ -->
+The IETF **AI Preferences (ai-pref)** working group was chartered to develop standards-track mechanisms for expressing AI opt-in / opt-out preferences in a uniform way. The WG is active (in the Web and Internet Transport area) and, at the time of this chapter's writing, carries active Internet-Drafts covering a vocabulary of AI preferences (`draft-ietf-aipref-vocab`) and an attachment mechanism including HTTP-header expression and a `/.well-known/ai-preferences` URI (`draft-ietf-aipref-attach`); no RFCs have been published yet. The direction of travel is toward a single, standards-track signal with explicit purpose-category granularity (training vs. retrieval vs. search indexing, for example). See <https://datatracker.ietf.org/wg/aipref/about/> for current WG status.
 
 Your pipeline should be ready to consume whatever ai-pref produces as an *additional* signal, not a replacement for the existing ones, until the industry converges. Design the opt-out evaluator as a chain: each honoured signal is one input, and admission requires all signals to permit.
 

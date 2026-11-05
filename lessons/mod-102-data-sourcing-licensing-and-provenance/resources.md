@@ -22,29 +22,29 @@ All chapters in this module are grounded in primary-source standards, regulation
 ## Opt-out signalling and crawler honour contracts
 
 - **RFC 9309 — Robots Exclusion Protocol** (September 2022): <https://www.rfc-editor.org/rfc/rfc9309>.
-- **IETF AI Preferences (ai-pref) working group** — charter, mailing list, and current drafts: <https://datatracker.ietf.org/wg/aipref/about/>. <!-- needs-research: verify published RFCs and active I-Ds at read time. -->
+- **IETF AI Preferences (ai-pref) working group** — charter, mailing list, and current drafts: <https://datatracker.ietf.org/wg/aipref/about/>. Active WG in the WIT area; current Internet-Drafts include `draft-ietf-aipref-vocab` (vocabulary) and `draft-ietf-aipref-attach` (attachment / HTTP headers / `/.well-known/ai-preferences`); no RFCs published yet.
 - **ai.txt** — community-maintained AI-crawler opt-out convention. Spawning reference: <https://site.spawning.ai/spawning-ai-txt>.
 - **llms.txt** — community-maintained LLM-facing content convention; note that it is an *inclusion* signal, not an opt-out: <https://llmstxt.org/>.
-- **DeviantArt `noai` meta tag announcement** — original publisher of the `noai` meta convention: <https://www.deviantart.com/team/journal/UPDATE-All-Deviations-Are-Opted-Out-of-AI-Datasets-934500371>. <!-- needs-research: verify current URL / archive at read time. -->
+- **DeviantArt `noai` meta tag announcement** — original publisher of the `noai` / `noimageai` meta and `X-Robots-Tag` convention: <https://www.deviantart.com/team/journal/UPDATE-All-Deviations-Are-Opted-Out-of-AI-Datasets-934500371>.
 
 ### Operator documentation for AI-specific crawlers
 
 - **OpenAI** — GPTBot and ChatGPT-User opt-out: <https://platform.openai.com/docs/bots>.
-- **Anthropic** — ClaudeBot and Claude-User documentation: <https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler>. <!-- needs-research: confirm Anthropic's current published crawler reference page. -->
+- **Anthropic** — ClaudeBot, Claude-User, and Claude-SearchBot documentation: <https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler> (the former `support.anthropic.com` host now redirects to `support.claude.com`).
 - **Common Crawl Foundation — CCBot**: <https://commoncrawl.org/ccbot>.
 - **Google** — Google-Extended and the full crawler list including Googlebot: <https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers>.
-- **Apple** — Applebot and Applebot-Extended documentation: <https://support.apple.com/en-us/119829>. <!-- needs-research: verify current URL at read time. -->
-- **Perplexity** — PerplexityBot: <https://docs.perplexity.ai/guides/bots>. <!-- needs-research: verify current URL / section. -->
-- **Meta** — Meta-ExternalAgent crawler documentation: <https://developers.facebook.com/docs/sharing/webmasters/web-crawlers/>. <!-- needs-research: confirm current token and URL. -->
-- **Cloudflare** — AI-bot management and pay-per-crawl: <https://blog.cloudflare.com/perplexity-is-using-stealth-undeclared-crawlers-to-evade-website-no-crawl-directives/> and <https://blog.cloudflare.com/control-content-use-for-ai-training/>. <!-- needs-research: cite the current platform-feature doc pages, not only blog posts, at read time. -->
+- **Apple** — Applebot and Applebot-Extended documentation (Apple Support article HT119829, "About Applebot"): <https://support.apple.com/en-us/119829>.
+- **Perplexity** — PerplexityBot and related crawlers: <https://docs.perplexity.ai/docs/resources/perplexity-crawlers>.
+- **Meta** — web-crawlers documentation (listing `FacebookExternalHit`, `Meta-WebIndexer`, `Meta-ExternalAgent`, `Meta-ExternalAds`, `Meta-ExternalFetcher`): <https://developers.facebook.com/documentation/sharing/webmasters/web-crawlers>.
+- **Cloudflare** — AI Crawl Control and Pay Per Crawl developer documentation: <https://developers.cloudflare.com/ai-crawl-control/>. Background announcements: <https://blog.cloudflare.com/introducing-ai-crawl-control/> and <https://blog.cloudflare.com/control-content-use-for-ai-training/>.
 
 ## EU regulation
 
 - **Regulation (EU) 2024/1689** — the EU Artificial Intelligence Act. EUR-Lex consolidated text: <https://eur-lex.europa.eu/eli/reg/2024/1689/oj>. Relevant articles for this module: Article 53 (training-data documentation, copyright policy), Annex XI, Annex XII.
 - **Directive (EU) 2019/790** — Copyright in the Digital Single Market (the DSM Copyright Directive); Articles 3 and 4 TDM. EUR-Lex: <https://eur-lex.europa.eu/eli/dir/2019/790/oj>.
 - **EU AI Office** — practitioner hub for the AI Act, including the GPAI Code of Practice and Article 53(1)(d) summary template. European Commission page: <https://digital-strategy.ec.europa.eu/en/policies/ai-office>.
-- **GPAI Code of Practice** — successive draft and final versions published by the AI Office. <!-- needs-research: cite the controlling version at read time and the signatory list. -->
-- **European Data Protection Board (EDPB)** — opinions on AI-training issues: <https://www.edpb.europa.eu/>. Of particular relevance: EDPB Opinion 28/2024 on certain data-protection aspects related to the processing of personal data in the context of AI models. <!-- needs-research: cite the controlling EDPB guidance in force at read time. -->
+- **GPAI Code of Practice** — final version received by the Commission on 10 July 2025 and approved by the Commission and AI Board on 1 August 2025; three chapters (Transparency, Copyright, Safety and Security): <https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai>. Signatory list and taskforce page: <https://digital-strategy.ec.europa.eu/en/pages/signatory-taskforce-gpai-code-practice>.
+- **European Data Protection Board (EDPB)** — opinions on AI-training issues: <https://www.edpb.europa.eu/>. Of particular relevance: EDPB Opinion 28/2024 on certain data-protection aspects related to the processing of personal data in the context of AI models (adopted 17 December 2024): <https://www.edpb.europa.eu/system/files/2024-12/edpb_opinion_202428_ai-models_en.pdf>.
 - **Regulation (EU) 2016/679** — General Data Protection Regulation (GDPR). EUR-Lex: <https://eur-lex.europa.eu/eli/reg/2016/679/oj>. Particularly Articles 5, 6, 9, 14, 22, 35 (DPIA).
 
 ## US copyright and the open litigation landscape

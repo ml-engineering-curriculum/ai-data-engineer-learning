@@ -31,7 +31,7 @@ The practical implication for the pipeline:
 
 ### What the EU AI Office GPAI Code of Practice adds
 
-The AI Office's General-Purpose AI Code of Practice (published in two parts during 2024–2025) operationalises Article 53 duties, including the copyright-policy duty. The Code expects, at minimum:
+The AI Office's General-Purpose AI Code of Practice — final version received by the Commission on 10 July 2025 and approved by the Commission and AI Board on 1 August 2025, organised into three chapters (Transparency, Copyright, Safety and Security) — operationalises Article 53 duties, including the copyright-policy duty (<https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai>). The Code expects, at minimum:
 
 - A documented copyright policy that is published or made available to the Office.
 - Honouring of the main machine-readable opt-out signals (robots.txt, ai.txt, etc.) at ingest.
@@ -41,8 +41,6 @@ The AI Office's General-Purpose AI Code of Practice (published in two parts duri
 
 Signatory GPAI providers publish summaries of their adherence to the Code; non-signatories are still bound by the Article 53 duty, they just carry it without the Code's safe-harbour-shaped guidance.
 
-<!-- needs-research: cite the current Code of Practice part, revision date, and publication URL at read time. -->
-
 Your pipeline-side evidence — the ingest decision log from Chapter 03 plus the dataset-level documentation from Chapters 05–06 — is the artifact the Code expects you to be able to produce.
 
 ## The US copyright posture
@@ -51,10 +49,8 @@ The United States has no DSM-equivalent statute. Commercial training on copyrigh
 
 Two things follow for an AI Data Engineer.
 
-1. **The US Copyright Office's position.** The Office has been publishing a multi-part report on copyright and artificial intelligence (Part 1 on digital replicas; Part 2 on copyrightability; Part 3 on generative-AI training issues including licensing and fair use). The Part 3 analysis speaks to training-data questions but is advisory, not binding. Its central analytical move is that fair use depends heavily on commercial purpose, memorisation / output similarity, and market harm; it stops short of a blanket position. <!-- needs-research: cite the latest issued parts, their publication dates, and any superseding guidance at read time — https://www.copyright.gov/ai/ -->
-2. **The open litigation landscape.** Multiple active lawsuits have been brought by rightsholders against AI providers, covering text, code, images, and music; several have reached partial summary judgment, many remain on appeal, and some have settled on licensing terms. The landscape evolves quarterly. Your organisation's legal team tracks a monitoring brief; your pipeline's job is to produce the *factual record* that a defence or a settlement would depend on — what was ingested, under what signals, with what licence tags, with what provenance — not to opine on which side has the better argument.
-
-<!-- needs-research: at read time, verify the status of the headline US fair-use training cases — note names, docket numbers, and current posture without opining. -->
+1. **The US Copyright Office's position.** The Office has been publishing a multi-part report on *Copyright and Artificial Intelligence*: Part 1 — Digital Replicas (July 2024); Part 2 — Copyrightability (January 2025); Part 3 — Generative AI Training (pre-publication version released May 2025) (<https://www.copyright.gov/ai/>). The Part 3 analysis speaks to training-data questions but is advisory, not binding. Its central analytical move is that fair use depends heavily on commercial purpose, memorisation / output similarity, and market harm; it stops short of a blanket position.
+2. **The open litigation landscape.** Multiple active lawsuits have been brought by rightsholders against AI providers, covering text, code, images, and music; several have reached partial summary judgment, many remain on appeal, and some have settled on licensing terms. Headline rulings to date include *Thomson Reuters v. ROSS Intelligence* (D. Del. Feb. 2025; affirmed by the Third Circuit in 2026), rejecting fair use for training a non-generative legal-search tool on Westlaw headnotes, and *Bartz v. Anthropic* (N.D. Cal. June 2025), holding generative-model training on legally-acquired books to be transformative fair use while rejecting fair use for a permanent library of pirated books (case settled September 2025). The landscape evolves quarterly. Your organisation's legal team tracks a monitoring brief; your pipeline's job is to produce the *factual record* that a defence or a settlement would depend on — what was ingested, under what signals, with what licence tags, with what provenance — not to opine on which side has the better argument.
 
 ### The engineering consequence of an unsettled US position
 
@@ -70,7 +66,7 @@ The posture is counsel's. The code that enforces it is yours.
 
 For a multi-national ML program you also meet:
 
-- **UK** — a proposed broad TDM exception was abandoned in 2023 after rightsholder opposition. The current UK position is somewhere between the EU Article 4 (with stronger reservation posture) and US fair-use territory. A separate proposal for a text-and-data-mining exception with an opt-out mechanism has been consulted on; status is evolving. <!-- needs-research: verify UK IPO's current position at read time. -->
+- **UK** — a proposed broad TDM exception was abandoned in 2023 after rightsholder opposition. The current UK position is somewhere between the EU Article 4 (with stronger reservation posture) and US fair-use territory. A December 2024 government consultation on a TDM exception with an opt-out mechanism closed in February 2025; in its March 2026 *Report on Copyright and Artificial Intelligence* the UK government stated that the data-mining-exception-with-opt-out proposal is no longer its preferred way forward, with no immediate reform committed.
 - **Japan** — Copyright Act Article 30-4 (as amended 2018) permits use of works for *information analysis* purposes, including training, broadly and without an opt-out mechanism. Japan is currently the most TDM-permissive jurisdiction among G7 members for commercial training.
 - **Singapore** — Copyright Act 2021 Section 243 creates a computational data analysis exception with specific conditions (lawful access, non-redistribution).
 - **South Korea** — a TDM exception is being debated in the context of amendments to the Copyright Act.

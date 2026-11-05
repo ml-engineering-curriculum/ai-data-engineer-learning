@@ -176,9 +176,7 @@ The evaluation engineer's package wraps these with:
 
 ### The AI Act Article 53(1)(d) summary
 
-Under Article 53(1)(d), GPAI model providers must publish a sufficiently detailed summary about the content used for training. The EU AI Office provides a template; the summary's data-side inputs are your selection matrix, your source-type catalogue, your opt-out posture, and the aggregate statistics from the Datasheet.
-
-<!-- needs-research: cite the current AI Office template for Article 53(1)(d) summary at read time. -->
+Under Article 53(1)(d), GPAI model providers must publish a sufficiently detailed summary about the content used for training. The EU AI Office published its *Explanatory Notice and Template for the Public Summary of Training Content* on 24 July 2025 (entered into force 2 August 2025; models placed on the market before that date have until 2 August 2027 to comply) — see the AI Office pages under <https://digital-strategy.ec.europa.eu/en/policies/ai-office>. The summary's data-side inputs are your selection matrix, your source-type catalogue, your opt-out posture, and the aggregate statistics from the Datasheet.
 
 Your deliverable to the evaluation engineer is a **summary input YAML** that maps your slice evidence to the template fields:
 

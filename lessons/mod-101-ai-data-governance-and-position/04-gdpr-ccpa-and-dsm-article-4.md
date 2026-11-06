@@ -33,7 +33,7 @@ Processing personal data requires a lawful basis. The relevant ones for training
 
 - **6(1)(a) Consent** — opt-in from the data subject. Useful for first-party training data, user-submitted content with explicit consent, and research panels. Unworkable for web-scale crawl.
 - **6(1)(b) Contract** — necessary for performance of a contract with the subject. Rare for pretraining; relevant for first-party data where the product T&Cs explicitly cover training.
-- **6(1)(f) Legitimate interests** — balancing test. Commonly cited for training data, but requires a documented Legitimate Interests Assessment (LIA) and does not work for Article 9 special categories. The EDPB has issued opinions constraining how legitimate interests can be relied on for LLM training. <!-- needs-research: cite the current EDPB opinion on legitimate interests for AI training (Opinion 28/2024 and any superseding guidance). -->
+- **6(1)(f) Legitimate interests** — balancing test. Commonly cited for training data, but requires a documented Legitimate Interests Assessment (LIA) and does not work for Article 9 special categories. **EDPB Opinion 28/2024** (adopted 17 December 2024) sets out the three-step test (purpose, necessity, balancing) for relying on Article 6(1)(f) at the development and deployment phases of AI models: <https://www.edpb.europa.eu/system/files/2024-12/edpb_opinion_202428_ai-models_en.pdf>. Draft EDPB Guidelines 03/2026 on Web Scraping in the Context of Generative AI (July 2026) operationalise the Opinion for scraped training data; verify the latest version at read time.
 
 Pipeline consequence: every source in the manifest carries a `lawful_basis` tag. Legitimate-interests sources are gated behind an LIA ID; consent-based sources are gated behind the consent store.
 
@@ -64,7 +64,7 @@ The California Consumer Privacy Act (as amended by the California Privacy Rights
 - **Sale** — exchange of personal information for monetary or other valuable consideration.
 - **Sharing** — disclosure of personal information for cross-context behavioural advertising, whether or not for consideration.
 
-The CPRA added **"sharing"** as a distinct obligation, and extended consumer rights to include correction and limitation of use of sensitive personal information. The California Consumer Privacy Agency (CPPA) issues implementing regulations, including specific rules relevant to automated decisionmaking technology (ADMT). <!-- needs-research: cite current CPPA ADMT regulations status; this is evolving. -->
+The CPRA added **"sharing"** as a distinct obligation, and extended consumer rights to include correction and limitation of use of sensitive personal information. The California Consumer Privacy Agency (CPPA) issues implementing regulations. The CPPA Board adopted the combined "CCPA Updates, Cybersecurity Audits, Risk Assessments, Automated Decisionmaking Technology (ADMT), and Insurance Regulations" package on 24 July 2025; the Office of Administrative Law approved it on 22 September 2025, with the regulations effective 1 January 2026 and ADMT-specific compliance required by 1 January 2027 (<https://cppa.ca.gov/regulations/ccpa_updates.html>).
 
 Pipeline consequence for CCPA/CPRA:
 
@@ -92,11 +92,11 @@ Pipeline consequence:
 
 - A **crawl-contract compiler** reads opt-out signals at ingest and marks content as *reserved*. Reserved content is either dropped or routed into a licensed-only partition depending on your organisation's posture.
 - EU AI Act Article 53(1)(c) obliges GPAI providers to have a policy to comply with Article 4(3). "Compliance" means your pipeline honours the reservation; "policy" means the dataset card references the opt-out matrix.
-- The IETF **AI Preferences** working group is developing standards-track opt-out signalling. <!-- needs-research: verify current status, published RFCs, and interaction with existing robots.txt / ai.txt practice. -->
+- The IETF **AI Preferences (aipref)** working group is developing standards-track opt-out signalling. As of late 2026 two Internet-Drafts are active and still in WG phase (no RFC yet): `draft-ietf-aipref-vocab` (a vocabulary for expressing AI usage preferences) and `draft-ietf-aipref-attach` (associating those preferences with HTTP content; updates RFC 9309). WG home: <https://datatracker.ietf.org/wg/aipref/about/>.
 
 ### US copyright for training data: what you can and cannot say
 
-US copyright does not have an Article 4 analogue. Providers currently rely on *fair use* for training on copyrighted material, which is actively being litigated (multiple cases pending as of this writing). Your organisation's legal position on US training data is something counsel declares; you do not. <!-- needs-research: note the status of key pending US fair-use training cases at read time, without opining. -->
+US copyright does not have an Article 4 analogue. Providers currently rely on *fair use* for training on copyrighted material, and the case law is still forming. By late 2026, outcomes are mixed and jurisdictionally fractured: *Kadrey v. Meta Platforms* granted summary judgment to the defendant on fair use for LLM training (N.D. Cal., 25 June 2025); the Third Circuit affirmed judgment rejecting fair use in *Thomson Reuters v. Ross Intelligence* (Sept. 2026); *Bartz v. Anthropic* settled in September 2025; and the consolidated *In re OpenAI Copyright Infringement Litigation* (including *New York Times v. OpenAI*) remained at summary-judgment stage in S.D.N.Y. Your organisation's legal position on US training data is something counsel declares; you do not. Check current case status at read time.
 
 Pipeline consequence: the per-source `licence` tag and `jurisdiction_posture` tag lets you build a slice that matches the organisation's current legal risk tolerance. When counsel's position changes, the change is a filter update, not a re-curation.
 

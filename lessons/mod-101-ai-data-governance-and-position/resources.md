@@ -20,9 +20,9 @@ Standards are paywalled. The ISO Online Browsing Platform (OBP) exposes titles, 
 - **ISO/IEC 5259-2:2024** — Part 2: Data quality measures.
 - **ISO/IEC 5259-3:2024** — Part 3: Data quality management requirements and guidelines.
 - **ISO/IEC 5259-4:2024** — Part 4: Data quality process framework.
-- **ISO/IEC 5259-5:2024** — Part 5: Data quality governance.
+- **ISO/IEC 5259-5:2025** — Part 5: Data quality governance framework.
 
-<!-- needs-research: confirm final publication year on each 5259 part at read time; some parts were still DIS/FDIS when scoped for this module. -->
+Parts 1–4 were published in 2024 and Part 5 in 2025; verify the current edition for each part on the ISO OBP at read time.
 
 ## EU regulation
 
@@ -30,7 +30,7 @@ Standards are paywalled. The ISO Online Browsing Platform (OBP) exposes titles, 
 - **Directive (EU) 2019/790** — Copyright in the Digital Single Market (the DSM Copyright Directive); Article 4 TDM exception. EUR-Lex: <https://eur-lex.europa.eu/eli/dir/2019/790/oj>.
 - **Regulation (EU) 2016/679** — General Data Protection Regulation (GDPR). EUR-Lex: <https://eur-lex.europa.eu/eli/reg/2016/679/oj>.
 - **EU AI Office** — practitioner hub for the AI Act including the GPAI Code of Practice and the training-data summary template. European Commission page: <https://digital-strategy.ec.europa.eu/en/policies/ai-office>.
-- **European Data Protection Board (EDPB) opinions** — binding and influential guidance on GDPR interpretation. Browse by topic at <https://www.edpb.europa.eu/>. Of particular relevance: EDPB Opinion 28/2024 on certain data-protection aspects related to the processing of personal data in the context of AI models. <!-- needs-research: cite the superseding or related EDPB guidance in force at read time. -->
+- **European Data Protection Board (EDPB) opinions** — binding and influential guidance on GDPR interpretation. Browse by topic at <https://www.edpb.europa.eu/>. Of particular relevance: **Opinion 28/2024** on certain data-protection aspects related to the processing of personal data in the context of AI models (adopted 17 December 2024, <https://www.edpb.europa.eu/system/files/2024-12/edpb_opinion_202428_ai-models_en.pdf>); draft **Guidelines 02/2026** on Anonymisation and **Guidelines 03/2026** on Web Scraping in the Context of Generative AI (July 2026) operationalise it. Check <https://www.edpb.europa.eu/> for the current published versions.
 
 ## US privacy and consumer protection
 
@@ -41,13 +41,13 @@ Standards are paywalled. The ISO Online Browsing Platform (OBP) exposes titles, 
 
 - **SR 11-7** — "Guidance on Model Risk Management", Federal Reserve Board, April 4, 2011: <https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm>.
 - **OCC 2011-12** — "Supervisory Guidance on Model Risk Management", Office of the Comptroller of the Currency, April 4, 2011: <https://www.occ.gov/news-issuances/bulletins/2011/bulletin-2011-12.html>.
-- **FDIC FIL-22-2017** — Supervisory guidance on model risk management (adoption of SR 11-7 shape for FDIC-supervised institutions). <!-- needs-research: verify FDIC current adoption reference. -->
+- **FDIC FIL-22-2017** — "Adoption of Supervisory Guidance on Model Risk Management", 7 June 2017 (<https://www.fdic.gov/news/financial-institution-letters/2017/fil17022.html>). Rescinded in April 2026 alongside SR 11-7 and OCC 2011-12 and replaced by revised interagency guidance (<https://www.fdic.gov/news/financial-institution-letters/2026/agencies-revise-interagency-model-risk-management-guidance>); verify the operative document at read time.
 - **FDA Good Machine Learning Practice Guiding Principles** (October 2021, joint FDA / Health Canada / UK MHRA): <https://www.fda.gov/medical-devices/software-medical-device-samd/good-machine-learning-practice-medical-device-development-guiding-principles>.
-- **FDA Predetermined Change Control Plans for AI-Enabled Device Software Functions — Final Guidance**, US Food and Drug Administration, December 2024. <!-- needs-research: pin the exact FDA guidance document title and docket at read time. -->
+- **FDA — "Marketing Submission Recommendations for a Predetermined Change Control Plan for Artificial Intelligence-Enabled Device Software Functions"**, final guidance (issued 4 December 2024; revised 18 August 2025), docket FDA-2022-D-2628: <https://www.fda.gov/regulatory-information/search-fda-guidance-documents/marketing-submission-recommendations-predetermined-change-control-plan-artificial-intelligence>.
 
 ## US state AI law
 
-- **Colorado SB 24-205 (Colorado AI Act)** — signed May 17, 2024, effective February 1, 2026. Text and status: <https://leg.colorado.gov/bills/sb24-205>. Colorado Attorney General implementing rulemaking is the controlling practical guidance. <!-- needs-research: cite the Colorado AG rules in force at read time. -->
+- **Colorado SB 24-205 (Colorado AI Act)** — signed May 17, 2024. Original 1 February 2026 effective date pushed to 30 June 2026 by SB25B-004 (signed 28 August 2025), then superseded by **SB 26-189** (signed 14 May 2026) which substantially revised the regime with a 1 January 2027 effective date. Text and status of each: <https://leg.colorado.gov/bills/sb24-205>. Colorado Attorney General implementing rulemaking under the original SB 24-205 did not complete before replacement; check <https://coag.gov/> for rules in force at read time.
 - **NYC Local Law 144** on Automated Employment Decision Tools — effective July 5, 2023. NYC Department of Consumer and Worker Protection (DCWP) implementing rules: <https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page>.
 
 <!-- needs-research: additional US state regimes (Utah AI Policy Act, Illinois HB 3773, Texas DPSA, Virginia CDPA, Connecticut CTDPA, Oregon OCPA, Montana MCDPA, etc.) land primarily on deployers; verify active list at read time. -->

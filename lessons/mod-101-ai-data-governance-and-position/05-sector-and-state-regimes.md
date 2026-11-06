@@ -12,7 +12,7 @@ Each one is a *flavour* of the same artifact set: documented training-data pract
 
 ## SR 11-7 and OCC 2011-12 — model risk management in US banking
 
-SR 11-7 is the Federal Reserve's 2011 supervisory letter on model risk management, issued jointly with OCC Bulletin 2011-12. It applies to all models used by US banks and bank holding companies — risk, pricing, fraud, AML, consumer-credit decisioning, and increasingly AI-based models. The FDIC adopted equivalent guidance in 2017 (FIL-22-2017). <!-- needs-research: verify current FDIC adoption reference. -->
+SR 11-7 is the Federal Reserve's 2011 supervisory letter on model risk management, issued jointly with OCC Bulletin 2011-12. It applies to all models used by US banks and bank holding companies — risk, pricing, fraud, AML, consumer-credit decisioning, and increasingly AI-based models. The FDIC adopted equivalent guidance in 2017 ("Adoption of Supervisory Guidance on Model Risk Management", FIL-22-2017, 7 June 2017). In April 2026 the Federal Reserve, OCC, and FDIC rescinded SR 11-7, OCC 2011-12, and FIL-22-2017 and issued revised interagency model risk management guidance (<https://www.fdic.gov/news/financial-institution-letters/2026/agencies-revise-interagency-model-risk-management-guidance>); the underlying principles remain the lingua franca. Verify which document is in force at read time.
 
 SR 11-7 is pre-AI-era, but its vocabulary has become the lingua franca for model governance in US financial services. Its structure:
 
@@ -78,7 +78,7 @@ The developer / deployer obligations most relevant to a data engineer:
 - Developers must make a publicly available statement summarising the types of high-risk AI systems the developer has currently made available and how known/foreseeable risks are managed.
 - Developers must disclose known or foreseeable risks of algorithmic discrimination to the Attorney General within 90 days of discovery.
 
-The Attorney General issues rules on implementation; the law contains defences for compliance with recognised AI risk management frameworks including NIST AI RMF. <!-- needs-research: cite current Colorado AG rulemaking status and any amendments or delays to the 2026 effective date. -->
+The Attorney General issues rules on implementation; the law contains defences for compliance with recognised AI risk management frameworks including NIST AI RMF. Note that the original 1 February 2026 effective date has moved: SB25B-004 (signed 28 August 2025) pushed it to 30 June 2026, and SB 26-189 (signed 14 May 2026) substantially revised the regime with a new 1 January 2027 effective date. AG rulemaking under the original SB 24-205 did not complete before it was superseded. Verify the operative statute and rules at <https://leg.colorado.gov/bills/sb24-205> and <https://coag.gov/> at read time.
 
 For the pipeline:
 
@@ -101,7 +101,7 @@ NYC Local Law 144 (effective July 2023) regulates **Automated Employment Decisio
 
 Why it matters for an AI Data Engineer: *bias audit* under LL 144 is scoped to outcomes, not to training data directly. But to perform an LL 144 audit the auditor needs the slice's demographic composition and the model's performance by demographic group — artifacts you own. Tag any slice used to train an AEDT so the LL 144 package can be assembled quickly.
 
-<!-- needs-research: cite the current DCWP (NYC Department of Consumer and Worker Protection) implementing rules for LL 144 at read time. -->
+DCWP's implementing rules were adopted on 6 April 2023 (Notice of Adoption) with enforcement beginning 5 July 2023; the rules text is at <https://rules.cityofnewyork.us/rule/automated-employment-decision-tools-updated/>. No substantive amendments have been adopted since.
 
 ## How the sector/state regimes reuse the pipeline
 

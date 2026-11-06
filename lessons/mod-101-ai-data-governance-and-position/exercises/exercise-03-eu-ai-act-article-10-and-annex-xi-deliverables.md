@@ -17,7 +17,7 @@ The scenarios share many artifacts but differ in audience (regulator-for-the-sys
 - You have read Chapter 03.
 - You have skimmed EU AI Act Articles 3, 6, 10, 51–56, 72, 73, and Annexes III, XI, XII. The EUR-Lex consolidated text of Regulation (EU) 2024/1689 is the primary source.
 - You have at least one dataset-card template at hand (Hugging Face YAML, Google Model Cards Toolkit, or similar).
-- You have reviewed the EU AI Office training-data summary template if published at read time; if not, note the gap. <!-- needs-research: pin the current AI Office template URL and version at read time. -->
+- You have reviewed the EU AI Office training-data summary template (published 24 July 2025 with its Explanatory Notice at <https://digital-strategy.ec.europa.eu/en/library/explanatory-notice-and-template-public-summary-training-content-general-purpose-ai-models>); confirm the current revision at read time.
 
 ## Problem statement
 

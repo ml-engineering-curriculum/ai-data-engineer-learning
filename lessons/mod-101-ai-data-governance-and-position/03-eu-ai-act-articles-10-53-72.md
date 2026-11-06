@@ -10,7 +10,7 @@ For an AI Data Engineer three Articles matter more than any others:
 - **Article 53 + Annex XI + Annex XII** — Obligations for **general-purpose AI (GPAI) models**, including the public training-data summary and the technical-documentation package.
 - **Article 72** — Post-market monitoring, including dataset-side signals that feed back into pipeline work.
 
-Alongside the binding Act, the **EU AI Office General-Purpose AI Code of Practice** is a voluntary code that anticipates regulator expectations for GPAI providers. Signing the code is not required, but it is the current best available guide for *what the AI Office will accept* in training-data documentation. <!-- needs-research: check the published status, version, and signatory list of the GPAI Code of Practice at the time the student reads this chapter; cite the AI Office page. -->
+Alongside the binding Act, the **EU AI Office General-Purpose AI Code of Practice** is a voluntary code that anticipates regulator expectations for GPAI providers. The final Code was published on 10 July 2025 and contains three chapters (Transparency, Copyright, Safety and Security); the signatory list and current status are maintained at <https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai>. Signing is not required, but the Code is the current best available guide for *what the AI Office will accept* in training-data documentation. Verify the signatory list at read time.
 
 This chapter is not legal advice. It teaches you to read these Articles as an engineer so that, when legal counsel and the governance analyst hand you a scope, you know which pipeline artifact answers which paragraph.
 
@@ -67,7 +67,7 @@ Annex XII lists what downstream providers get. The data-side content overlaps he
 
 ### The public training-data summary (Article 53(1)(d))
 
-The public summary is the headline artifact and the one most visible outside the organisation. The AI Office has published a template; signatories to the GPAI Code of Practice commit to using it. The summary must be "sufficiently detailed" — enough to let rights-holders assess whether their content was used and whether their opt-out was honoured — while not requiring the provider to publish a full corpus listing. <!-- needs-research: cite the exact published AI Office template version and URL at the time the student reads this chapter; template content and shape evolves. -->
+The public summary is the headline artifact and the one most visible outside the organisation. The AI Office published the mandatory template and its Explanatory Notice on 24 July 2025 (<https://digital-strategy.ec.europa.eu/en/library/explanatory-notice-and-template-public-summary-training-content-general-purpose-ai-models>); the obligation applies to new GPAI models placed on the market from 2 August 2025 and to pre-existing models by 2 August 2027. The summary must be "sufficiently detailed" — enough to let rights-holders assess whether their content was used and whether their opt-out was honoured — while not requiring the provider to publish a full corpus listing. Confirm the current template revision at read time.
 
 Engineering output: a `training_data_summary.md` (or JSON/CSV in the Office's required format) per model release, built from the source manifests of every slice included in the training mix. This is the mod-112 deliverable; mod-101 teaches you that it exists and who needs it.
 
@@ -93,7 +93,7 @@ For your purposes:
 - Measures signatories commit to generally include: honouring ai.txt / robots.txt-based opt-outs and DSM Article 4 reservations, publishing the training-data summary in the AI Office template, maintaining incident reporting and systemic-risk assessments.
 - You should structure your pipeline so that a decision to sign the Code (or not) later is a configuration change, not a re-plumbing.
 
-<!-- needs-research: cite the specific published version of the GPAI Code of Practice current at read time, the list of signatories, and any AI Office guidance or interpretation documents superseding earlier drafts. -->
+The final Code was published on 10 July 2025 at <https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai>, with the first signatory taskforce meeting held on 30 January 2026. Complementary Commission Guidelines on the scope of GPAI-provider obligations (C(2025) 5045 final, 18 July 2025) sit alongside the Code at <https://digital-strategy.ec.europa.eu/en/policies/guidelines-gpai-providers>. Confirm the signatory roster and any later revisions at read time.
 
 ## A reading plan for the Act
 

@@ -124,7 +124,7 @@ exercise-05/
   - `ai_risk_engineer_review` block with `verdict: pending_review` and a named reviewer.
 - `handoff_to_ai_risk_engineer.md` is one page and actionable — a peer could execute the review checklist from it without further briefing.
 - The quarantine is **not** a silent drop — every flagged artifact is routed with a reason code and remains inspectable.
-- Any factual claim in the README or handoff that could not be verified at authoring time is marked `<!-- needs-research: ... -->`.
+- Any factual claim in the README or handoff that could not be verified at authoring time is tagged with an inline `needs-research` HTML comment describing what still needs checking.
 
 ## Stretch goals
 

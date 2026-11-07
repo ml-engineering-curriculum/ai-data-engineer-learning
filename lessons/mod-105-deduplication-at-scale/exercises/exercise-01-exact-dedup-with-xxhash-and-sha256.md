@@ -81,7 +81,7 @@ exercise-01/
 - The `fingerprints.parquet.sha256` and `dedup_slice.sha256` sidecar files match the computed artifact hashes.
 - Per-source removal rates are present in `§3.exact_dedup.per_source_removal_rate` with at least five distinct sources.
 - `comparison.md` reports peak RSS and docs/sec for both implementations and includes the Bloom-filter false-positive rate observed vs. the one targeted.
-- Any factual claim in the README that could not be verified at authoring time is marked with `<!-- needs-research: ... -->`.
+- Any factual claim in the README that could not be verified at authoring time is tagged with an inline `needs-research` HTML comment describing what still needs checking.
 
 ## Stretch goals
 

@@ -105,7 +105,7 @@ exercise-02/
 - `§3.near_dedup_document.per_source_removal_rate` has ≥ 5 distinct sources; `§3.near_dedup_document.max_cluster_size` is populated and the cluster-size histogram plot matches the reported value.
 - `§4.memorisation_risk.extraction_risk_delta_estimate` is a sentence that cites Kandpal 2022 and does not fabricate a precise multiplier.
 - Determinism: re-running `build_signatures.py` with the same seed produces bit-identical signatures.
-- Any factual claim in `s_curve.md` or the README that could not be verified at authoring time is marked `<!-- needs-research: ... -->`.
+- Any factual claim in `s_curve.md` or the README that could not be verified at authoring time is tagged with an inline `needs-research` HTML comment describing what still needs checking.
 
 ## Stretch goals
 

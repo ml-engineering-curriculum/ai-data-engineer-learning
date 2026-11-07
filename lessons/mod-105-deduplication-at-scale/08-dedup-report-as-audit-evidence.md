@@ -134,9 +134,7 @@ memorisation_risk:
   method_sha: 1a2b...
 ```
 
-This is the bridge to [`mod-110`](../mod-110-pii-and-privacy-risk-for-training-data/README.md). Kandpal 2022 ties memorisation to frequency; post-dedup the frequency distribution's tail collapses, and the extraction-attack risk collapses with it. The actual number depends on the model and task — do not claim more precision than Kandpal 2022 supports. "Roughly an order of magnitude reduction, consistent with Kandpal 2022 §4" is the honest shape.
-
-<!-- needs-research: cite the specific memorisation-vs-frequency equation/curve Kandpal 2022 presents and use it to compute the delta for your slice; do not fabricate a precise number. -->
+This is the bridge to [`mod-110`](../mod-110-pii-and-privacy-risk-for-training-data/README.md). Kandpal 2022 ties memorisation to frequency and reports that the rate at which language models regenerate training sequences is *superlinear* in a sequence's count in the training set — for example, a sequence that appears 10× in training is generated roughly 1000× more often than one that appears once. Post-dedup, the frequency distribution's tail collapses, and the extraction-attack risk collapses with it. The actual number depends on the model and task — do not claim more precision than Kandpal 2022 supports. "Roughly an order of magnitude reduction in the regeneration rate at the slice's modal duplicate count, consistent with Kandpal 2022" is the honest shape.
 
 ### §5. Adversarial-perturbation review
 

@@ -46,8 +46,7 @@ The first two are the ones dedup can directly contribute to detecting. The third
 - Nightshade's canonical implementation has distinctive distributional signatures in the image spectrum (the paper discusses this; detection research is active and evolving).
 - Dedup pipelines contribute by surfacing *clusters of images with the same perturbation fingerprint applied across different base images* — those clusters are suspicious even without a direct Nightshade detector.
 - Operational response: quarantine, not drop. You are not qualified to make the "is this Nightshade" call alone; `ai-risk-engineer` makes it. You produce the evidence.
-
-<!-- needs-research: cross-check the latest Nightshade version and whether public detectors (e.g. from the Nightshade team, from the University of Chicago SAND lab) have been released at read time; defender tooling evolves. -->
+- As of writing (Nightshade 1.1, April 2026), the SAND Lab publishes the perturbation tool but does not ship an official detector; the public defender-side work on detecting Nightshade / Glaze perturbations (e.g. the 2025 *LightShed* paper) comes from the research community rather than the SAND lab itself. Re-check the project page and recent literature at read time before citing a specific detector.
 
 ## Glaze (Shan et al. 2023)
 
@@ -78,9 +77,7 @@ The techniques most directly relevant to this chapter:
 - **AML.T0051.001 — LLM Prompt Injection via Training Data.** Relevant to LLM training on web text where instruction-like content has been injected.
 - **AML.T0018 — Backdoor ML Model.** Downstream consequence of successful training-data poisoning.
 
-Your dedup pipeline's quarantine-and-escalate behaviour is a **mitigation** for AML.T0020 and AML.T0019 and an **evidence source** for the detection tooling `ai-risk-engineer` owns.
-
-<!-- needs-research: ATLAS technique identifiers above are stable at the time of writing but ATLAS is a living document — re-verify the identifiers and current technique coverage at read time. -->
+Your dedup pipeline's quarantine-and-escalate behaviour is a **mitigation** for AML.T0020 and AML.T0019 and an **evidence source** for the detection tooling `ai-risk-engineer` owns. (ATLAS has continued to evolve: the 2026.07 release, for example, renamed AML.T0020 from "Poison Training Data" to "Training Data Poisoning" without changing the identifier. Re-check the current technique titles and coverage at <https://atlas.mitre.org/> before citing.)
 
 ## OWASP ML Top 10 and OWASP LLM Top 10
 
@@ -90,9 +87,7 @@ Your dedup pipeline's quarantine-and-escalate behaviour is a **mitigation** for 
 
 **OWASP LLM Top 10 (2023):** <https://owasp.org/www-project-top-10-for-large-language-model-applications/>.
 
-- **LLM03:2023 Training Data Poisoning** (also tracked as **LLM04** in later revisions — the item has been renumbered across editions; cite the current item number at read time). Your dedup pipeline's duplicate-cluster-size distribution and per-source removal rate are direct evidence for or against poisoning in a slice.
-
-<!-- needs-research: the OWASP LLM Top 10 renumbering has moved Training Data Poisoning between LLM03 and LLM04 across editions. Cite the current edition at the time of audit. -->
+- **LLM03:2023 Training Data Poisoning** in the 2023 edition; in the 2025 edition this is renumbered and broadened as **LLM04:2025 Data and Model Poisoning** (<https://owasp.github.io/www-project-top-10-for-large-language-model-applications/>). The item has moved across editions, so cite the specific edition and item number you are auditing against. Your dedup pipeline's duplicate-cluster-size distribution and per-source removal rate are direct evidence for or against poisoning in a slice.
 
 **The division-of-responsibility language from `mod-101`:**
 

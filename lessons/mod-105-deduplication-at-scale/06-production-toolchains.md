@@ -64,9 +64,7 @@ bloom_filter.estimated_doc_count = 1000000000
 bloom_filter.desired_false_positive_rate = 0.0001
 ```
 
-Record this config in the slice artifact; the Bloom-filter parameters are part of your dedup report's provenance (Chapter 08).
-
-<!-- needs-research: re-verify the current dolma CLI command names and TOML field names against the repo at read time — they have changed across releases. -->
+Record this config in the slice artifact; the Bloom-filter parameters are part of your dedup report's provenance (Chapter 08). The CLI entry point is `dolma dedupe` and the config file accepts dot-path fields such as `dedupe.documents.key`, `dedupe.documents.attribute_name`, `dedupe.paragraphs.attribute_name`, `dedupe.paragraphs.by_ngram.{ngram_length,stride,threshold}`, and `bloom_filter.{file,size_in_bytes,estimated_doc_count,desired_false_positive_rate,read_only}`; the TOML keys in the example above are illustrative — check the current `allenai/dolma` `docs/deduplication.md` at the version you run.
 
 ## `NeMo Curator` — NVIDIA's GPU-accelerated curator
 
@@ -112,7 +110,7 @@ dedup = FuzzyDuplicates(config=config)
 dup_pairs = dedup(ds)
 ```
 
-<!-- needs-research: cross-check API names and default values against the current NeMo-Curator release at read time; `num_buckets` and `hashes_per_bucket` are the current (as of 2024) names. -->
+The current release documents `FuzzyDuplicatesConfig(cache_dir, id_field, text_field, seed, char_ngrams, num_buckets, hashes_per_bucket, use_64_bit_hash, buckets_per_shuffle, false_positive_check, ...)` with `num_buckets=20` / `hashes_per_bucket=13` as the published defaults that target Jaccard ≈ 0.8; the parameter names above are the correct 2026 form, but pin the NeMo-Curator release and re-read `nemo_curator.stages.deduplication.fuzzy` at the version you run, because defaults have moved across minor releases.
 
 ## `data-juicer` — Alibaba's operator framework
 
@@ -162,7 +160,7 @@ process:
       tokenizer_model: null
 ```
 
-<!-- needs-research: confirm data-juicer operator names and parameter shapes against the current release at read time; the operator registry has been renamed in some releases. -->
+The operator names shown (`document_deduplicator`, `document_minhash_deduplicator`, `document_simhash_deduplicator`) match the current data-juicer operator catalogue, which now also exposes variants such as `document_minhash_deduplicator_with_uid` and a Ray-optimised `ray_bts_minhash_deduplicator`; confirm the exact operator and parameter names for your pinned version against the `datajuicer/data-juicer` operator reference at <https://datajuicer.github.io/data-juicer/en/main/docs/Operators.html>.
 
 ## Spark + `datasketch` — the roll-your-own option
 
@@ -188,10 +186,10 @@ A short reference table, for citing in design docs. Verify against each project'
 | **RefinedWeb** (Penedo et al. 2023) | MinHash + LSH | Document | 0.8 |
 | **Dolma** (Soldaini et al. 2024) | `dolma` Bloom + MinHash | Document + paragraph | ~0.8 |
 | **SlimPajama** (Cerebras / Together 2023) | MinHash + LSH | Document | ~0.8 |
-| **FineWeb** (Penedo et al. 2024) | `datatrove` MinHash | Document | 0.8 |
+| **FineWeb** (Penedo et al. 2024) | `datatrove` MinHash | Document (per snapshot) | ~0.75 (5-grams, 14 bands × 8 rows) |
 | **RedPajama-Data v2** (Together 2023) | Dask + MinHash | Document | 0.8 |
 
-<!-- needs-research: confirm each entry's exact settings from the dataset's released code / README at read time; the thresholds here are published in the papers / repos but have shifted in minor-version updates. The table is the shape; the numbers deserve a re-check. -->
+Values above are drawn from each release's paper, blog, and public pipeline code. Thresholds and band / row configurations have shifted in minor-version updates (e.g. FineWeb publishes 5-grams at 14 × 8 ≈ 112 permutations, not the common `K=128`), so verify each entry against the dataset's current released code / README before citing in your own design doc.
 
 Two recurring patterns in that table:
 

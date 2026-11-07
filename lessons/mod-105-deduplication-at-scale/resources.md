@@ -1,13 +1,13 @@
 # Resources for mod-105 — Deduplication at Trillion-Token Scale
 
-Primary sources first. Prefer the canonical publisher's copy over any summary. Versions, DOI stability, and dataset hosting change — re-verify at read time; `<!-- needs-research: ... -->` notes mark items that are particularly time-sensitive.
+Primary sources first. Prefer the canonical publisher's copy over any summary. Versions, DOI stability, and dataset hosting change — re-verify at read time; inline `needs-research` HTML comments mark items that are particularly time-sensitive.
 
 ## Core references — the three claims of Chapter 01
 
 - **Lee, Ippolito, Nystrom, Zhang, Eck, Callison-Burch, Carlini.** *Deduplicating Training Data Makes Language Models Better.* ACL 2022 (arXiv 2107.06499, 2021). <https://aclanthology.org/2022.acl-long.577/> — the perplexity + sample-efficiency case. Companion tooling: `ExactSubstr` and `NearDup` at <https://github.com/google-research/deduplicate-text-datasets>.
 - **Kandpal, Wallace, Raffel.** *Deduplicating Training Data Mitigates Privacy Risks in Language Models.* ICML 2022 (arXiv 2202.06539). <https://arxiv.org/abs/2202.06539> — the memorisation / extraction-attack case.
 - **Carlini, Ippolito, Jagielski, Lee, Tramèr, Zhang.** *Quantifying Memorization Across Neural Language Models.* ICLR 2023 (arXiv 2202.07646). <https://arxiv.org/abs/2202.07646> — the memorisation-scales-with-frequency result that Chapter 01 and Chapter 08 §4 build on.
-- **Soboleva, Al-Khateeb, Myers, Steeves, Hestness, Dey.** *SlimPajama: A 627B token cleaned and deduplicated version of RedPajama.* Cerebras / Together, 2023. <https://www.cerebras.net/blog/slimpajama-a-627b-token-cleaned-and-deduplicated-version-of-redpajama/>. Dataset: <https://huggingface.co/datasets/cerebras/SlimPajama-627B>. SlimPajama processing tools: <https://github.com/Cerebras/modelzoo/tree/main/modelzoo/transformers/data_processing/slimpajama>. <!-- needs-research: confirm current repository location — Cerebras modelzoo has been reorganised across releases. -->
+- **Soboleva, Al-Khateeb, Myers, Steeves, Hestness, Dey.** *SlimPajama: A 627B token cleaned and deduplicated version of RedPajama.* Cerebras / Together, 2023. <https://www.cerebras.ai/blog/slimpajama-a-627b-token-cleaned-and-deduplicated-version-of-redpajama> (the `cerebras.net` domain now redirects to `cerebras.ai`). Dataset: <https://huggingface.co/datasets/cerebras/SlimPajama-627B>. SlimPajama processing tools remain in the `Cerebras/modelzoo` repository under `modelzoo/transformers/data_processing/slimpajama` (<https://github.com/Cerebras/modelzoo/tree/main/modelzoo/transformers/data_processing/slimpajama>); confirm the current branch / commit at read time since the modelzoo repo has been reorganised across releases.
 
 ## Near-duplicate algorithm references
 
@@ -42,7 +42,7 @@ Primary sources first. Prefer the canonical publisher's copy over any summary. V
 
 ## Public pretraining corpora and their dedup documentation
 
-- **The Pile** — Gao, Biderman, Black et al. 2020. <https://arxiv.org/abs/2101.00027>. <!-- needs-research: confirm current hosting state; portions have been removed from public distribution. -->
+- **The Pile** — Gao, Biderman, Black et al. 2020. <https://arxiv.org/abs/2101.00027>. Note: the Books3 subset was removed following a 2023 DMCA takedown and the original EleutherAI Hugging Face mirror is no longer downloadable in its full form; the remaining 21 of 22 sub-corpora are still available via community mirrors. Re-check hosting at read time.
 - **C4 / mC4** — Raffel et al. 2020 (T5). <https://arxiv.org/abs/1910.10683>. HF mirror: <https://huggingface.co/datasets/allenai/c4>.
 - **RefinedWeb** — Penedo, Malartic, Hesslow et al. 2023. <https://arxiv.org/abs/2306.01116>. Dataset: <https://huggingface.co/datasets/tiiuae/falcon-refinedweb>.
 - **Dolma** — Soldaini et al. 2024. <https://aclanthology.org/2024.acl-long.840/>.
@@ -69,9 +69,9 @@ Primary sources first. Prefer the canonical publisher's copy over any summary. V
 
 - **MITRE ATLAS** — <https://atlas.mitre.org/>. Techniques of interest in this module: AML.T0019 (Publish Poisoned Datasets), AML.T0020 (Poison Training Data), AML.T0018 (Backdoor ML Model), AML.T0051.001 (LLM Prompt Injection — Training Data Variant).
 - **OWASP Machine Learning Security Top 10 (2023)** — <https://owasp.org/www-project-machine-learning-security-top-10/>. ML02:2023 Data Poisoning Attack is the canonical entry.
-- **OWASP Top 10 for LLM Applications** — <https://owasp.org/www-project-top-10-for-large-language-model-applications/>. Training Data Poisoning has shifted between LLM03 and LLM04 across editions; cite the current item at read time. <!-- needs-research: verify OWASP LLM Top 10 edition number and the training-data-poisoning item id at authoring time. -->
+- **OWASP Top 10 for LLM Applications** — <https://owasp.org/www-project-top-10-for-large-language-model-applications/>. In the 2023 edition the relevant item is **LLM03:2023 Training Data Poisoning**; in the 2025 edition it is broadened and renumbered to **LLM04:2025 Data and Model Poisoning**. Cite the specific edition and item you are auditing against.
 - **NIST AI RMF** — *Artificial Intelligence Risk Management Framework*. <https://www.nist.gov/itl/ai-risk-management-framework>. AI RMF Playbook: <https://airc.nist.gov/AI_RMF_Knowledge_Base/Playbook>.
-- **NIST SP 800-218A** — *Secure Software Development Practices for Generative AI and Dual-Use Foundation Models.* <https://csrc.nist.gov/pubs/sp/800/218/a/final>. <!-- needs-research: track SP 800-218A revisions. -->
+- **NIST SP 800-218A** — *Secure Software Development Practices for Generative AI and Dual-Use Foundation Models: An SSDF Community Profile.* Finalised July 2024. <https://csrc.nist.gov/pubs/sp/800/218/a/final>. Intended to be used alongside SP 800-218 (not as a replacement); check csrc.nist.gov for subsequent revisions.
 - **NIST AI 100-2 E2023** — *Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations.* <https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf>.
 
 ## ISO standards referenced

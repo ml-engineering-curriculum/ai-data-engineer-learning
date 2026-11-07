@@ -20,14 +20,12 @@ Pin these three claims verbatim. They are the ones you will be asked to support 
 
 Key findings from the paper, in the shape you should be able to cite:
 
-- Exact substring duplicates are extremely common in C4, LM1B, RealNews, and Wiki40B — large fractions of each corpus appear in near-duplicate clusters. The paper reports *concrete duplicate rates per corpus* in §3; reproduce the exact numbers from the paper when citing, do not approximate.
+- Near-duplicate and exact-substring duplicates are common in C4, LM1B, RealNews, and Wiki40B. The paper's Table 2 reports *NearDup percentage of training examples* as **C4 3.04%**, **RealNews 13.63%**, **LM1B 4.86%**, **Wiki-40B 0.39%**; Table 3 reports *ExactSubstr percentage of training tokens* as **C4 7.18%**, **RealNews 19.4%**, **LM1B 0.76%**, **Wiki-40B 2.76%**. Web-scraped corpora (C4, RealNews) carry the most duplication; curated Wiki-40B the least.
 - Models trained on the de-duplicated corpora achieve **equal or better perplexity** on validation data, using less training compute to reach the same point on the loss curve.
 - The de-duplicated training set has a cleaner separation from the validation set (fewer "train-test overlaps through duplication") — a point relevant to benchmark contamination ([`mod-106`](../mod-106-benchmark-contamination-and-decontamination/README.md)).
 - The authors release two tools alongside the paper: `ExactSubstr` (suffix-array based exact duplicate removal) and `NearDup` (MinHash + LSH). Both are the canonical reference implementations for the two families covered in this module.
 
 **Why it matters for your pipeline:** if your pipeline does not dedup, the training team is burning compute re-learning the same document ten or a hundred times. The budget to re-filter and re-train is far larger than the budget to dedup once.
-
-<!-- needs-research: cite the exact duplicate-rate numbers from Lee et al. §3 (C4, LM1B, RealNews, Wiki40B) from the ACL 2022 version at authoring time; do not paraphrase from memory. -->
 
 ### 2. Dedup is a privacy control (Kandpal et al. 2022)
 
@@ -47,11 +45,9 @@ Key findings:
 
 Key findings:
 
-- RedPajama 1.2T tokens → SlimPajama 627B tokens. Roughly half the corpus was duplicated or near-duplicated content.
-- Removal was performed at the document level using MinHash + LSH at Jaccard threshold ~0.8.
+- RedPajama 1.21T tokens → SlimPajama 627B tokens. Roughly half the corpus was duplicated or near-duplicated content.
+- The Cerebras blog states removal was performed at the document level with **MinHash + LSH at Jaccard threshold 0.8** on **lowercase 13-grams**; the specific permutation and band / row counts are not pinned in the blog post and must be read from the released processing code.
 - SlimPajama has been widely reused as a drop-in replacement for RedPajama precisely because downstream training results improve at matched compute.
-
-<!-- needs-research: confirm the exact Jaccard threshold, hash-count, and band configuration SlimPajama used from the Cerebras blog + accompanying `slimpajama` repo at <https://github.com/Cerebras/modelzoo/tree/main/modelzoo/transformers/data_processing/slimpajama>. The ~0.8 threshold and the roughly-50% removal figure are the two load-bearing numbers. -->
 
 **Why it matters:** this is the public empirical price tag. Roughly half of a web-sourced pretraining corpus is duplicate-shaped content. If a stakeholder asks *"is this really worth a week of pipeline work?"*, you point at SlimPajama's removal rate and its downstream model results.
 

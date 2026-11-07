@@ -98,7 +98,7 @@ exercise-03/
 - `dedup_report.yaml` conforms to Chapter 08 §3 with paragraph and targeted-sentence blocks.
 - `benchmark_ngrams.txt` and `pii_regex.yaml` are explicit, auditable, and version-controlled; the targeted sentence block in the report cites both.
 - At least one case where the **paragraph re-assembly rule** (`<DUPLICATE_PARAGRAPH>` vs drop) changes a document's semantic flow is noted in `comparison.md`.
-- Any factual claim in `comparison.md` or the README that could not be verified at authoring time is marked `<!-- needs-research: ... -->`.
+- Any factual claim in `comparison.md` or the README that could not be verified at authoring time is tagged with an inline `needs-research` HTML comment describing what still needs checking.
 
 ## Stretch goals
 

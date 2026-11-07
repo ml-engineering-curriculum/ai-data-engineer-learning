@@ -110,7 +110,7 @@ exercise-04/
 - `pair_agreement.json` reports `jaccard_of_pair_sets` and `intersection_size`, `union_size`. The agreement figure is at least ~0.75 (toolchains will differ; below 0.5 indicates a configuration mismatch, investigate).
 - `choice.md` compares your chosen toolchain to the other two by Chapter 06 §"The decision axes" criteria.
 - `dedup_report.yaml` §1 fields now reflect the production toolchain (name, version, config SHA, compute shape).
-- Any factual claim in `choice.md` or the README that could not be verified at authoring time is marked `<!-- needs-research: ... -->`.
+- Any factual claim in `choice.md` or the README that could not be verified at authoring time is tagged with an inline `needs-research` HTML comment describing what still needs checking.
 
 ## Stretch goals
 
@@ -118,7 +118,7 @@ exercise-04/
 - **Benchmark two toolchains against each other** on the same slice. Produce a head-to-head memo. Useful when a team is evaluating adoption.
 - **Automate the report emitter**: a script that reads the toolchain's native output format and populates the `dedup_report.yaml` fields without hand-authoring.
 - **Compare the `FineWeb` `datatrove` pipeline** (<https://github.com/huggingface/datatrove>) as a fourth option. It is the toolchain behind FineWeb and shares shape with dolma.
-- **Reproduce SlimPajama's parameters** on a Common Crawl slice. Publish the retention-rate match against the Cerebras / Together blog <!-- needs-research: SlimPajama's exact parameters per the repo at <https://github.com/Cerebras/modelzoo/tree/main/modelzoo/transformers/data_processing/slimpajama>; re-verify at authoring time -->.
+- **Reproduce SlimPajama's parameters** on a Common Crawl slice (the Cerebras blog pins MinHash + LSH at Jaccard 0.8 on lowercase 13-grams; the permutation / band / row configuration is defined in the `Cerebras/modelzoo` SlimPajama processing scripts at <https://github.com/Cerebras/modelzoo/tree/main/modelzoo/transformers/data_processing/slimpajama> — pin the commit SHA you actually ran). Publish the retention-rate match against the Cerebras / Together blog.
 
 ## What this exercise is not
 

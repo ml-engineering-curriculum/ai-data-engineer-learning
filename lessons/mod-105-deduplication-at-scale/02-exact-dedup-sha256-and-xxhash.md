@@ -38,9 +38,7 @@ Each layer is a policy decision. Decide each, then write the decision into the d
 - **Case policy.** Lowercasing is usually wrong for pretraining dedup — it collapses `US` (country) and `us` (pronoun). Casefold only in domain-specific contexts, never as a default.
 - **Encoding.** UTF-8. Lock it; hashing a `str` object across Python versions / platforms without an explicit encoding is a bug waiting to happen.
 
-A one-line "pre-processed" documentation entry is not enough — a future auditor must be able to reproduce your fingerprint byte-for-byte from the raw document.
-
-<!-- needs-research: cross-check NFC vs NFKC choice in public pipelines (dolma, data-juicer, NeMo Curator) at authoring time; defaults have drifted across versions. -->
+A one-line "pre-processed" documentation entry is not enough — a future auditor must be able to reproduce your fingerprint byte-for-byte from the raw document. Public pipelines (`dolma`, `data-juicer`, `NeMo Curator`) do not standardise on a single Unicode normalisation form; defaults have drifted across versions and across operators within the same release, so the policy you pick must be pinned per slice and checked against the upstream repo at the version you use.
 
 ## Which hash — and why they are not interchangeable
 
@@ -64,9 +62,7 @@ Two hash families cover almost every exact-dedup use case:
 - **xxh128 (or xxh3_128)** — bulk exact-dedup fingerprint column. Fast, 128-bit collision-safe for current corpus sizes.
 - **SHA-256** — one field at the slice artifact level, so that the slice is signable and audit-grade. Not applied per-document.
 
-The dedup report (Chapter 08) records which hash is used for which role.
-
-<!-- needs-research: confirm at authoring time whether BLAKE3 has become the default in any major pretraining pipeline (dolma, datatrove, data-juicer); xxh128 remains the fingerprint standard as of 2025. -->
+The dedup report (Chapter 08) records which hash is used for which role. BLAKE3 is available as a faster cryptographic alternative to SHA-256 and shows up in various research tooling, but as of this writing no major pretraining pipeline (`dolma`, `datatrove`, `data-juicer`) has adopted it as the default fingerprint — xxh128 (and xxh3-128) remains the fingerprint convention, with SHA-256 reserved for slice-level audit hashes.
 
 ### A small concrete example
 
@@ -153,9 +149,7 @@ Exact dedup does not catch:
 - **Templated content** — press releases, product pages, TOS pages with per-site branding.
 - **Translated / paraphrased duplicates** — out of scope regardless.
 
-These are the pathologies near-dup pipelines (Chapters 03–04) exist to catch. An exact-dedup-only pipeline on a web corpus typically removes 5–20% of documents. A near-dup pipeline at Jaccard 0.8 removes substantially more — SlimPajama's roughly-50% removal is the reference number.
-
-<!-- needs-research: confirm exact-only vs near-dup removal-rate gap numbers from public releases (SlimPajama, FineWeb, Dolma) at authoring time. -->
+These are the pathologies near-dup pipelines (Chapters 03–04) exist to catch. An exact-dedup-only pipeline on a web corpus typically removes 5–20% of documents. A near-dup pipeline at Jaccard 0.8 removes substantially more — SlimPajama's ~50% removal (1.21T → 627B tokens) is the reference number, and RefinedWeb's reported 45–75% removal across its Common Crawl candidate pool sits in the same ballpark. The exact ratio varies with the slice; check your corpus against the published numbers at the version of each release you cite.
 
 ## What exact dedup catches that near-dup wastes time on
 

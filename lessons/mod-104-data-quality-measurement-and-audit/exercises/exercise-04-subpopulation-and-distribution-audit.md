@@ -19,7 +19,7 @@ By the end you will have:
 - A slice with ≥ 100k documents, ideally multilingual (if you only have English, you may still complete the distribution half; the Kreutzer half degrades to a "representativeness of a single language" exercise, which is a weaker learning outcome — see §"Stretch goals").
 - Chapter 06 read. You should be able to write a `DisaggCounter` or an equivalent Spark `groupBy` aggregation.
 - Pinned reference distributions:
-  - **Language**: Wikipedia article counts per language at a pinned dump date, or another named reference. <!-- needs-research: The Wikipedia Statistics pages publish article counts; pin the exact dump date and URL you retrieve. -->
+  - **Language**: Wikipedia article counts per language at a pinned dump date, or another named reference. The Wikimedia Meta-Wiki "List of Wikipedias" page (<https://meta.wikimedia.org/wiki/List_of_Wikipedias>) and the MediaWiki `meta=siteinfo&siprop=statistics` API endpoint are the usual sources — pin the retrieval date and URL and record a SHA-256 of the snapshot you used.
   - **TLD**: a reference TLD distribution of your choice (e.g. Common Crawl's own TLD distribution for the snapshot, or the DCLM-Baseline TLD proportions). Pin the source and SHA-256.
   - **Temporal**: a target cadence from your pipeline's own spec (e.g. "last 36 months, roughly flat").
   - **Length**: pick a target log-scale bucket distribution; a simple "approximately log-normal between 200 and 20k characters" is acceptable if the slice spec does not define one.

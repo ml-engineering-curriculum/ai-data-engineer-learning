@@ -54,7 +54,7 @@ What varies: one knob at a time. "One knob" can be a filter being on or off, a t
 Picking the eval suite is as consequential as picking the filter. Guidance:
 
 - **Use a published, versioned suite.** The EleutherAI LM Evaluation Harness (<https://github.com/EleutherAI/lm-evaluation-harness>) is the standard. Pin the git SHA. Alternatives: HELM, BIG-bench, DCLM's own eval set. DCLM-LM reports on a suite that includes commonsense-reasoning, reading comprehension, closed-book QA, world-knowledge, coding, and math benchmarks; replicate as much of it as your compute allows.
-- **Cover multiple capability axes.** A single eval (say, MMLU) overweights world-knowledge and underweights reasoning. The minimum is one each of: a broad knowledge eval (MMLU or similar), a commonsense eval (HellaSwag, ARC), a reading-comprehension eval (SQuAD, TriviaQA), and a reasoning eval (GSM8K, BBH). <!-- needs-research: confirm the current recommended set from DCLM-LM at read time; the paper's eval set evolved. -->
+- **Cover multiple capability axes.** A single eval (say, MMLU) overweights world-knowledge and underweights reasoning. The minimum is one each of: a broad knowledge eval (MMLU or similar), a commonsense eval (HellaSwag, ARC), a reading-comprehension eval (SQuAD, TriviaQA), and a reasoning eval (GSM8K, BBH). The DCLM-LM paper evaluates on 53 zero- and few-shot tasks with a 22-task "Core" subset selected for low inter-run variance; replicate as much of that panel as your compute allows.
 - **Decontaminate first.** Every slice that flows into training must have been decontaminated against every eval in the suite. Otherwise the eval delta is noise around data leakage. See [`mod-106`](../mod-106-benchmark-contamination-and-decontamination/README.md) and Chapter 04 Axis 3 of this module.
 - **Report confidence intervals.** The eval scores have statistical uncertainty — reported standard errors on MMLU-style accuracies are typically 0.5 to 1.5 points at the sample sizes the benchmarks use. A "+0.3%" delta inside the CI is not a filter contribution; it is noise. Published recipes typically run 2–5 seeds per cell and report mean ± SE.
 
@@ -64,7 +64,7 @@ For a slice with filters `F_1, F_2, …, F_n` (acquire-stage check, URL blocklis
 
 Budget realistically:
 
-- A 160M-parameter LM trained on ~8B tokens with the DCLM small reference config takes a few hours on 8×A100 — call it 10 GPU-hours. <!-- needs-research: verify exact wall-clock numbers against DCLM-LM small reference-model reports at read time. -->
+- A 160M-parameter LM trained on ~8B tokens with the DCLM small reference config takes roughly a workstation-afternoon on 8×A100 — order-of-magnitude ~10 GPU-hours; verify the exact wall-clock against DCLM-LM's small reference-model report for your hardware.
 - 8 filters × 10 GPU-hours = 80 GPU-hours. One seed per cell — order-of-magnitude one workstation-day.
 - Multiple seeds per cell multiply the cost linearly. Start with one seed per cell; add a second seed on cells where the delta is close to the noise floor.
 

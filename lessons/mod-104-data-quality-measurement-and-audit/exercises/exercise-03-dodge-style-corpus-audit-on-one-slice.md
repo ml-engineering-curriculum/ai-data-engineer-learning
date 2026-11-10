@@ -17,7 +17,7 @@ The deliverable is a `dodge_audit.md` and `dodge_audit.json` that would plug int
 
 - A slice with at least ~1M raw records and a reachable raw population (you can re-fetch dropped records if the raw table is missing). If you came from mod-103 Ex 01, your per-record manifest gives you this for free.
 - Pipeline instrumentation that emits one `(record_id, filter_name, reason)` event per dropped record. If your `mod-103` Ex 01 pipeline does not, add the hook before starting this exercise — a side-effect `drop_log.write(...)` in each filter is enough.
-- Python 3.11+ with `polars` or `duckdb`, `datasets`, `datasketch` (if you want MinHash hints for contamination), and a dialect classifier pinned to a specific release. For English, the Blodgett et al. 2016 twitteraae classifier (<https://github.com/slanglab/twitteraae>) is the paper's reference; <!-- needs-research: re-verify the repo and model files are accessible at authoring time. --> For other languages, see Chapter 04 §"Dialect analysis".
+- Python 3.11+ with `polars` or `duckdb`, `datasets`, `datasketch` (if you want MinHash hints for contamination), and a dialect classifier pinned to a specific release. For English, the Blodgett et al. 2016 twitteraae classifier (<https://github.com/slanglab/twitteraae>, with vocabulary and count tables under `model/`) is the paper's reference. For other languages, see Chapter 04 §"Dialect analysis".
 - A pinned list of benchmark test / dev inputs. Use the Hugging Face `datasets` revisions for GLUE, SuperGLUE, HellaSwag, MMLU, GSM8K, and TriviaQA at a fixed commit. Record the dataset revision in `audit/benchmarks_pinned.yaml`.
 
 ## Problem statement

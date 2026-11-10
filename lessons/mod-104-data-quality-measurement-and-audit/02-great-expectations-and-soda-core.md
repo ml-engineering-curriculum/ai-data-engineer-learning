@@ -10,7 +10,7 @@ This chapter is the compact how-to-use-each. The deliverable you walk away with 
 
 ## Great Expectations — the data context, suites, and batches
 
-Great Expectations ships as the `great_expectations` PyPI package (upstream project at [GreatExpectationsLabs/great_expectations](https://github.com/great-expectations/great_expectations), docs at <https://docs.greatexpectations.io/>). The 1.x line reshaped the Data Context API; this chapter is written for the 1.x shape. <!-- needs-research: cite the exact GE version you pin to at read time; the project has rewritten its context API more than once and version pinning is load-bearing. -->
+Great Expectations ships as the `great_expectations` PyPI package (upstream project at [GreatExpectationsLabs/great_expectations](https://github.com/great-expectations/great_expectations), docs at <https://docs.greatexpectations.io/>). The 1.x line reshaped the Data Context API versus 0.x and is the current stable series (1.24.x as of late 2026); this chapter is written for the 1.x shape. Version pinning is load-bearing — record the exact release you author against.
 
 The four nouns you will touch:
 

@@ -7,10 +7,10 @@ Chapters in this module cite primary sources wherever possible. Prefer the prima
 - **ISO/IEC 25012:2008** — *Software engineering — Software product Quality Requirements and Evaluation (SQuaRE) — Data quality model*. The fifteen-characteristic data-quality model this module is built on. ISO catalog: <https://www.iso.org/standard/35736.html>.
 - **ISO/IEC 25024:2015** — *Software engineering — Software product Quality Requirements and Evaluation (SQuaRE) — Measurement of data quality*. The older measurement-of-data-quality standard; superseded for AI purposes by ISO/IEC 5259-2. <https://www.iso.org/standard/35749.html>.
 - **ISO/IEC 5259-1:2024** — *Artificial intelligence — Data quality for analytics and machine learning (ML) — Part 1: Overview, terminology, and examples*. <https://www.iso.org/standard/81088.html>.
-- **ISO/IEC 5259-2:2024** — *Part 2: Data quality measures*. The ML-specific measures catalogue referenced throughout this module. <https://www.iso.org/standard/81860.html>. <!-- needs-research: confirm final 2024 publication state and re-verify measure family names against the purchased copy. -->
+- **ISO/IEC 5259-2:2024** — *Part 2: Data quality measures*. The ML-specific measures catalogue referenced throughout this module; published November 2024. <https://www.iso.org/standard/81860.html>. Measure-family names in this module are paraphrased for pedagogy — re-verify the exact clause names against a purchased copy before citing them in an audit artifact.
 - **ISO/IEC 5259-3:2024** — *Part 3: Data quality management requirements and guidelines*. Governance process. <https://www.iso.org/standard/81861.html>.
 - **ISO/IEC 5259-4:2024** — *Part 4: Data quality process framework*. Lifecycle framing. <https://www.iso.org/standard/81862.html>.
-- **ISO/IEC 5259-5:2024** — *Part 5: Data quality governance*. Governance layer. <https://www.iso.org/standard/88049.html>. <!-- needs-research: confirm publication status at read time; -5 was in-progress during 2024. -->
+- **ISO/IEC 5259-5:2025** — *Part 5: Data quality governance framework*. Governance layer; published February 2025. <https://www.iso.org/standard/84150.html>.
 - **ISO/IEC 42001:2023** — *Artificial intelligence — Management system*. Clause 8 and Annex A.7 drive the data-engineering evidence. <https://www.iso.org/standard/81230.html>.
 - **ISO/IEC 23894:2023** — *Artificial intelligence — Guidance on risk management*. Annex B catalogue of AI-related risk sources. <https://www.iso.org/standard/77304.html>.
 
@@ -19,7 +19,7 @@ Chapters in this module cite primary sources wherever possible. Prefer the prima
 - **Great Expectations documentation** — <https://docs.greatexpectations.io/>.
 - **Great Expectations repository** — <https://github.com/great-expectations/great_expectations>.
 - **Expectation catalogue (built-ins)** — browsable at <https://greatexpectations.io/expectations/>.
-- Note: the Great Expectations 1.x line reshaped the Data Context API versus 0.x. Pin the exact version you author against. <!-- needs-research: confirm current major version and API shape at read time. -->
+- Note: the Great Expectations 1.x line reshaped the Data Context API versus 0.x and is the current stable series (1.24.x as of late 2026). Pin the exact release you author against.
 
 ## Soda Core
 
@@ -38,7 +38,7 @@ Chapters in this module cite primary sources wherever possible. Prefer the prima
 
 - **pandera documentation** — <https://pandera.readthedocs.io/>.
 - **pandera repository** — <https://github.com/unionai-oss/pandera>.
-- **Bantilan, Niels.** *pandera: Statistical Data Testing Toolkit*. JOSS 2020. <https://joss.theoj.org/papers/10.21105/joss.02778>. <!-- needs-research: cross-check JOSS DOI at read time. -->
+- **Bantilan, Niels.** *pandera: Statistical Data Validation of Pandas Dataframes*. Proceedings of the 19th Python in Science Conference (SciPy 2020). <https://proceedings.scipy.org/articles/Majora-342d178e-010>. DOI: 10.25080/Majora-342d178e-010.
 
 ## Dodge-style corpus audit
 
@@ -84,7 +84,7 @@ Chapters in this module cite primary sources wherever possible. Prefer the prima
 ## Public pretraining corpora whose audits are canonical reading
 
 - **C4** — introduced in Raffel et al. 2020 (T5). Hugging Face mirror: <https://huggingface.co/datasets/allenai/c4>.
-- **The Pile** — Gao, Biderman, Black et al. 2020. <https://arxiv.org/abs/2101.00027>. <!-- needs-research: confirm current hosting state; portions have been removed from public distribution. -->
+- **The Pile** — Gao, Biderman, Black et al. 2020. <https://arxiv.org/abs/2101.00027>. The full-corpus download from The Eye was taken down under rightsholder pressure; a "pile-uncopyrighted" subset remains on Hugging Face (<https://huggingface.co/datasets/monology/pile-uncopyrighted>), and EleutherAI's successor open corpus is Common Pile (2025).
 - **RefinedWeb** — Penedo, Malartic, Hesslow et al. 2023. <https://arxiv.org/abs/2306.01116>. <https://huggingface.co/datasets/tiiuae/falcon-refinedweb>.
 - **Dolma** — Soldaini, Kinney, Bhagia et al. 2024. <https://aclanthology.org/2024.acl-long.840/>. <https://huggingface.co/datasets/allenai/dolma>. Toolkit: <https://github.com/allenai/dolma>.
 - **RedPajama-Data v2** — Together AI 2023. <https://www.together.ai/blog/redpajama-data-v2>. <https://huggingface.co/datasets/togethercomputer/RedPajama-Data-V2>.
@@ -103,7 +103,7 @@ Chapters in this module cite primary sources wherever possible. Prefer the prima
 - **Label Studio** — <https://labelstud.io/>.
 - **Prodigy** — <https://prodi.gy/>.
 - **Argilla** — <https://argilla.io/>.
-- **Toloka** — <https://toloka.ai/>. <!-- needs-research: confirm current product name and availability per region at read time. -->
+- **Toloka** — <https://toloka.ai/>. (The worker-facing "Tolokers" product is now branded Mindrift following Toloka's 2025 spin-out from Nebius; the enterprise/data-services side still operates as Toloka. Regional availability varies.)
 - **Appen** — <https://www.appen.com/>.
 - **Amazon Mechanical Turk** — <https://www.mturk.com/>.
 

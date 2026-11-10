@@ -196,7 +196,7 @@ The dataset card (Gebru et al. datasheet format or Hugging Face Dataset Card) is
 - **"Maintenance"** — the monitor's refresh cadence from [`mod-111`](../mod-111-data-quality-monitoring-and-regression/README.md).
 - **Appendices** — the per-slice quality YAML embedded or linked as a `data-measurements.yaml` attachment on Hugging Face Hub.
 
-The Hugging Face Dataset Card YAML frontmatter supports the `data-measurements` block natively (<https://huggingface.co/docs/hub/datasets-cards>). Use it. <!-- needs-research: confirm the exact Hub frontmatter key for data-measurements at read time; the field has been renamed. -->
+The Hugging Face Dataset Card YAML frontmatter has no officially documented `data-measurements` field (see the dataset-card spec at <https://github.com/huggingface/hub-docs/blob/main/datasetcard.md> and the general guide at <https://huggingface.co/docs/hub/datasets-cards>); attach the per-slice measures as a linked artifact in the body or as a repo file alongside the README, and let the structured consumer (Croissant, your own tooling) pick it up by path.
 
 The Croissant metadata ([`mod-102`](../mod-102-data-sourcing-licensing-and-provenance/README.md)) consumes the same report differently — the SHA-256s feed the `distribution` block, the ISO measures feed `provenance.quality`, and the ablation's eval suite SHAs feed the `recordSet` mapping. [`mod-109`](../mod-109-dataset-versioning-lineage-reproducibility/README.md) covers the full provenance stack.
 

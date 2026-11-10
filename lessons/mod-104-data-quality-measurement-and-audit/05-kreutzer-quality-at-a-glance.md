@@ -46,7 +46,7 @@ Practical paths:
 
 - For languages your team covers, rate in-house.
 - For languages you don't, partner with academic groups working on that language's NLP. Credit them in the dataset card.
-- Platforms like Appen, Toloka, and Amazon Mechanical Turk have L1-speaker filters for some languages but coverage degrades for low-resource languages. Verify L1-speaker status via a short screener question in the native script — ask the rater to describe an image or respond to a prompt in the language. <!-- needs-research: platform availability and pricing for low-resource-language annotation shifts frequently; verify at read time. -->
+- Commercial crowdsourcing platforms (Appen, Toloka, Amazon Mechanical Turk, and successors) have L1-speaker filters for some languages but coverage degrades for low-resource languages, and platform branding and regional availability shift from year to year. Verify L1-speaker status via a short screener question in the native script — ask the rater to describe an image or respond to a prompt in the language.
 - For languages with no accessible rater pool, **record this as a gap** in the audit. Do not proxy with machine translation.
 
 Raters are paid at or above local prevailing wage for annotation work ([`mod-107`](../mod-107-labeling-operations-and-annotation-programs/README.md) covers the labour-ops discipline). A Kreutzer-style audit is a small enough job that you can budget an hour per rater per language; the sample size is 50–100 documents and each rating is a short categorical judgement.

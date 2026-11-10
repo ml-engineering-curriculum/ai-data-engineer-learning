@@ -83,7 +83,7 @@ Operational guidance:
 The minimum viable contamination audit uses **exact-string matching** on benchmark inputs:
 
 1. Build an index of test-split inputs from a curated list of benchmarks: GLUE / SuperGLUE / LAMBADA / HellaSwag / MMLU / GSM8K / HumanEval / BIG-bench, plus any task-specific evaluations your downstream model team uses. Pin the specific benchmark versions.
-2. For each slice document, compute whether it contains any benchmark input as a substring. 13-gram or longer substring matches at 0% error, per the Dodge et al. and later [Brown et al. 2020, GPT-3, Appendix C] (<https://arxiv.org/abs/2005.14165>) conventions. <!-- needs-research: confirm the exact n-gram length and mismatch tolerance used by your downstream training team; 8-gram, 13-gram, and 50-gram conventions all exist. -->
+2. For each slice document, compute whether it contains any benchmark input as a substring. 13-gram or longer substring matches at 0% error, per the Dodge et al. and [Brown et al. 2020, GPT-3, Appendix C] (<https://arxiv.org/abs/2005.14165>) conventions. (GPT-4 later shifted to a 50-character overlap signal; other recipes use 8-grams. Confirm which convention your downstream training team expects.)
 3. Emit a contamination report: `(benchmark, test_split_version, n_matches, hit_rate, example_matches)`.
 
 For a thorough contamination story, see [`mod-106`](../mod-106-benchmark-contamination-and-decontamination/README.md). The Dodge audit at this module's scale uses exact-match as a floor; the deeper near-dup / paraphrase detection lives in mod-106.

@@ -53,7 +53,7 @@ ISO/IEC 25012 pre-dates modern ML by over a decade. ISO/IEC 5259-2:2024 *Artific
 
 Treat 5259-2 as the catalogue of measure *names*. The standard is deliberately abstract about *how* to compute each; it is your job to choose a proxy. A measure is a `(characteristic, proxy, implementation, threshold, evidence)` tuple.
 
-<!-- needs-research: 5259-2 is published; confirm the exact 2024 edition date and whether the final version matches the committee draft at your read time. The ISO catalog entry is https://www.iso.org/standard/81860.html. -->
+ISO/IEC 5259-2:2024 was published in November 2024 (ISO catalogue: <https://www.iso.org/standard/81860.html>).
 
 ## A measure is a tuple, not a number
 
@@ -119,7 +119,7 @@ A short reference table you will come back to. Fill in the specific proxy per sl
 | Confidentiality | Privacy-risk measures | PII-leak rate ([`mod-110`](../mod-110-pii-and-privacy-risk-for-training-data/README.md)); k-anon; DP ε |
 | Traceability | Provenance-aware measures | Lineage events per document; signed snapshots ([`mod-109`](../mod-109-dataset-versioning-lineage-reproducibility/README.md)) |
 
-<!-- needs-research: ISO/IEC 5259-2 measure family names are paraphrased for pedagogy; verify the exact clause names against the purchased copy of the standard when citing in an audit artifact. -->
+The 5259-2 measure-family names in this table are paraphrased for pedagogy; when citing in an audit artifact, align the wording with the exact clause names in the standard as purchased.
 
 ## Reading discipline
 

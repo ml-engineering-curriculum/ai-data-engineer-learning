@@ -50,7 +50,7 @@ As of the current Presidio release, the Analyzer ships recognisers for a well-kn
 - `CRYPTO` — crypto-wallet addresses.
 - `MEDICAL_LICENSE` — regex-driven.
 
-<!-- needs-research: the set of supported entities and their locale coverage expands between releases. Confirm the full list, including any entities added since this chapter was authored, from the supported-entities page at read time. -->
+The set above is illustrative, not authoritative; locale coverage (India `IN_PAN`, Italy `IT_*`, Spain `ES_*`, German `DE_*`, Philippines `PH_TIN`, and so on) expands between releases. The canonical, versioned list is the project's supported-entities page (<https://microsoft.github.io/presidio/supported_entities/>) — always pin to a Presidio release tag and read that page for the release you have installed.
 
 Each recogniser declares the entity types it produces, a confidence-score baseline, and (for pattern recognisers) a list of named regex patterns with per-pattern scores.
 

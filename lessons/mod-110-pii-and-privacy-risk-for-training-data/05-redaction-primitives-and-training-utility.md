@@ -100,7 +100,7 @@ Libraries to know: **Faker** (<https://faker.readthedocs.io/>) is the standard P
 
 FPE encrypts a PII value while preserving its **format** — digits stay digits, characters stay characters, length is preserved. A 16-digit credit card encrypts to a 16-digit string that is still Luhn-valid (with an FFX variant that preserves the checksum).
 
-The canonical reference is **NIST SP 800-38G** *Recommendation for Block Cipher Modes of Operation: Methods for Format-Preserving Encryption*, which defines **FF1** and **FF3** modes. <https://csrc.nist.gov/pubs/sp/800/38/g/final>. <!-- needs-research: NIST has been revisiting SP 800-38G after small-domain attacks (Durak & Vaudenay 2017) on FF3; confirm the current rev. and the FF3 guidance status. -->
+The canonical reference is **NIST SP 800-38G** *Recommendation for Block Cipher Modes of Operation: Methods for Format-Preserving Encryption*, which defines **FF1** and **FF3** modes. <https://csrc.nist.gov/pubs/sp/800/38/g/final>. The final publication from 2016 still formally specifies both modes, but NIST has stated since April 2017 that FF3 is no longer suitable as a general-purpose FPE method; the **second public draft of SP 800-38G Rev. 1** (3 February 2025, <https://csrc.nist.gov/pubs/sp/800/38/g/r1/ipd>) withdraws FF3 entirely and specifies FF1 only, with a larger minimum domain size and tightened implementation requirements. Rev. 1 was still in draft as of this writing — treat FF1 as the only standards-track mode to adopt in new systems.
 
 **When FPE is right:**
 

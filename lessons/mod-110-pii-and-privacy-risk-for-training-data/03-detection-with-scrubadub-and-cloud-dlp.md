@@ -49,9 +49,7 @@ Treat scrubadub as a *tactical* tool, not a *strategic* one.
 
 ## Google Cloud Sensitive Data Protection (DLP)
 
-**Product page:** <https://cloud.google.com/sensitive-data-protection>. **API docs:** <https://cloud.google.com/sensitive-data-protection/docs>. Previously branded "Cloud DLP"; the "Sensitive Data Protection" name supersedes it.
-
-<!-- needs-research: Google renamed Cloud DLP to Sensitive Data Protection and restructured documentation URLs in 2023. Confirm URL stability and API resource-name canonicalisation at authoring time. -->
+**Product page:** <https://cloud.google.com/sensitive-data-protection>. **API docs:** <https://cloud.google.com/sensitive-data-protection/docs>. Previously branded "Cloud DLP"; the "Sensitive Data Protection" name supersedes it (2023 rebrand). The product-level URLs now live under `/sensitive-data-protection/`, but the API itself — service name `dlp.googleapis.com`, package `google.privacy.dlp.v2` — is unchanged, so existing client libraries and IAM role names (`roles/dlp.*`) still apply.
 
 DLP is a managed detection and transformation service. Its primitives:
 
@@ -169,9 +167,9 @@ Do not trust these numbers for your budget — always check current pricing at a
 
 - **Self-hosted Presidio with spaCy**: dominated by CPU time. On a modern CPU, order ~1,000–5,000 short documents per CPU-second.
 - **Self-hosted Presidio with transformer-NER**: dominated by GPU time. Order 100–1,000 documents per GPU-second depending on model size and batching.
-- **Google DLP `inspectContent`**: billed per gigabyte of inspected content. <!-- needs-research: confirm current per-GB DLP pricing and tier structure. -->
-- **AWS Comprehend PII**: billed per character (per hundred-character unit). <!-- needs-research: confirm current per-unit pricing. -->
-- **Azure AI Language PII**: billed per record. <!-- needs-research: confirm pricing. -->
+- **Google DLP `inspectContent`**: billed per gigabyte of inspected content — at publication the public rate card was roughly US$3/GB above a 1 GB free tier, dropping to ~US$0.75/GB beyond 1 TB (see <https://cloud.google.com/sensitive-data-protection/pricing>). Always re-check at your authoring date.
+- **AWS Comprehend PII** (`DetectPiiEntities`): billed per 100-character unit with a 3-unit (300-character) minimum per request; at publication the first-tier rate was on the order of US$0.0001 per unit, with tiered volume discounts at 10M and 50M units (see <https://aws.amazon.com/comprehend/pricing/>).
+- **Azure AI Language PII**: billed per text record, where one record = up to 1,000 characters (rounded up per document); at publication the first-tier rate was on the order of US$1.00 per 1,000 records with tiered discounts above 500k / 2.5M / 10M records (see <https://azure.microsoft.com/pricing/details/language-service/>).
 
 A corpus of 1 TB of plain text, scrubbed once, with a managed service bill in the tens-of-thousands-of-USD range is a realistic order-of-magnitude. Self-hosting on a small GPU fleet for the same workload can be an order of magnitude cheaper, at the price of operational work. Price your options against your actual corpus; the decision should fall out of that calculation.
 

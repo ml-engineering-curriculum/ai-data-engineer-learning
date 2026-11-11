@@ -23,8 +23,7 @@ Key findings, in the shape you should cite:
 - The authors demonstrate a **black-box** training-data extraction attack against GPT-2. Using only API-style queries, they recover verbatim training sequences including PII (names, email addresses, phone numbers), code snippets, UUIDs, and IRC conversations.
 - The attack works because large LMs assign unusually high likelihood to sequences they memorised verbatim. Prompt + sampling + membership-inference-style scoring surfaces these sequences.
 - The paper demonstrates the attack on GPT-2, but the mechanism (high likelihood → recoverable) is a property of maximum-likelihood training, not of GPT-2 specifically. The follow-up work by Nasr et al. 2023 (*Scalable Extraction of Training Data from (Production) Language Models*) demonstrates the same mechanism at production-model scale.
-
-<!-- needs-research: cite the exact number of extracted PII records and the exact extraction-attack precision figure from the Carlini 2020 paper's main-results section at authoring time; do not paraphrase from memory. -->
+- Quantitatively (Carlini et al. 2021, §6): the authors confirmed **604 unique memorised training examples** out of 1,800 candidate generations, an aggregate true-positive rate of **33.5%**. Among the 604, their category breakdown includes **46 "named individuals"** and **32 "contact information"** examples (addresses, emails, phone numbers, social handles) — i.e., on the order of tens of verbatim PII strings recovered from the public GPT-2 model via black-box queries.
 
 **Why it matters for your pipeline:** every PII string that enters the corpus is a candidate extraction target for someone who later queries the trained model. The pipeline is the only point at which you can prevent that string from becoming one.
 

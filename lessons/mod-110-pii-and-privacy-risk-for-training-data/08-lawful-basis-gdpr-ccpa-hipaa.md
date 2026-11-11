@@ -98,7 +98,7 @@ Record the pipeline-side side of the process in the privacy-risk report. This is
 
 ### The EDPB opinion on AI model training
 
-The European Data Protection Board published **Opinion 28/2024 on certain data protection aspects related to the processing of personal data in the context of AI models** (<https://www.edpb.europa.eu/system/files/2024-12/edpb_opinion_202428_ai-models_en.pdf>). <!-- needs-research: an EDPB opinion on AI-model training was published December 2024; re-check for subsequent opinions / guidelines. --> This is the current authoritative read on how legitimate-interests balances for LLM training. Counsel cites it; you should read it so you can have the conversation.
+The European Data Protection Board adopted **Opinion 28/2024 on certain data protection aspects related to the processing of personal data in the context of AI models** on 17 December 2024 (<https://www.edpb.europa.eu/system/files/2024-12/edpb_opinion_202428_ai-models_en.pdf>) — it remains the current authoritative read on legitimate-interests balancing for LLM training, and the EDPB's **draft Guidelines 02/2026 on Anonymisation** (adopted for consultation on 7 July 2026; see the EDPB guidelines page <https://www.edpb.europa.eu/our-work-tools/general-guidance/guidelines-recommendations-best-practices_en>) extend the same reasoning to the "when is a trained model anonymous?" question. Counsel cites both; you should read them so you can have the conversation.
 
 ## CCPA / CPRA — the California baseline
 

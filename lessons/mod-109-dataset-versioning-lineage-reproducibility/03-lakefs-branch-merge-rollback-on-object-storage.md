@@ -208,7 +208,7 @@ A pinned snapshot URL for downstream consumers is a tag or commit SHA. Treat the
 
 ## Lineage integration — lakeFS and OpenLineage
 
-lakeFS has supported OpenLineage event emission as an action hook pattern. A post-commit or post-merge webhook can translate the commit event into an OpenLineage `COMPLETE` event, with:
+lakeFS does not ship a first-party OpenLineage adapter (it is not listed in the OpenLineage integrations index at [openlineage.io/docs/integrations](https://openlineage.io/docs/integrations/)); the integration is a self-authored webhook pattern on top of lakeFS's Lua/HTTP action hooks ([lakeFS hooks docs](https://lakefs.io/blog/lakefs-hooks/)). A post-commit or post-merge webhook can translate the commit event into an OpenLineage `COMPLETE` event, with:
 
 - `job.name` = `lakefs.commit.<repo>.<branch>` or `lakefs.merge.<repo>.<source>.<destination>`
 - `job.namespace` = the repo name
@@ -217,8 +217,6 @@ lakeFS has supported OpenLineage event emission as an action hook pattern. A pos
 - `inputs[]` = dataset facets for every parent commit referenced in the merge
 
 The practical shape: the pipeline that *writes* to lakeFS emits OpenLineage events for its own steps (via Chapter 06's integration); the *post-merge* lakeFS webhook emits a *release* event describing the version promotion. Both end up in Marquez or DataHub; the graph becomes queryable.
-
-<!-- needs-research: confirm whether lakeFS ships a first-party OpenLineage action adapter at read time, or whether the integration is a community-maintained webhook pattern. Check the lakeFS integrations index. -->
 
 ## Operating notes
 

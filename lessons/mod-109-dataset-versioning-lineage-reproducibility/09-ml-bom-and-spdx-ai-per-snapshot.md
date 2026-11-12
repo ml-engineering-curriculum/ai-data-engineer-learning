@@ -173,7 +173,7 @@ def to_json(bom: Bom) -> str:
     return JsonV1Dot6(bom).output_as_string()
 ```
 
-<!-- needs-research: confirm the exact `cyclonedx-python-lib` API shape (class names, property setters) at authoring time. The library's 4.x → 5.x → 6.x renamed several constructors. -->
+The class and method names above (`Bom`, `Component`, `BomRef`, `ExternalReference`, `ExternalReferenceType`, `Dependency`, and `JsonV1Dot6(...).output_as_string()`) are current in [`cyclonedx-python-lib`](https://pypi.org/project/cyclonedx-python-lib/) 11.x ([outputting docs](https://cyclonedx-python-library.readthedocs.io/en/latest/outputting.html)).
 
 ### Validation and signing
 
@@ -285,13 +285,11 @@ When the snapshot is directly bound to a model under development, emit an **AI-p
   "spdxId": "urn:example:model:sft-chat-assistant-v3.2.0",
   "name": "sft-chat-assistant",
   "packageVersion": "v3.2.0",
-  "aiSystemType": ["generativeAI", "largeLanguageModel"],
-  "useCase": "customer-support assistant for example.com",
-  "informationAboutApplication": "chat-tuned, deployed to product chat UI",
+  "typeOfModel": ["transformer", "largeLanguageModel"],
+  "informationAboutApplication": "chat-tuned customer-support assistant for example.com, deployed to product chat UI",
   "safetyRiskAssessment": "serious",
   "modelDataPreprocessing": ["deduplication", "contamination-firewall", "pii-redaction"],
   "limitation": "English only; not validated for safety-critical workflows",
-  "typeOfModel": ["transformer"],
   "hyperparameter": [{"name": "learning_rate", "value": "2e-5"}],
   "autonomyType": "humanInTheLoop"
 },
@@ -304,9 +302,7 @@ When the snapshot is directly bound to a model under development, emit an **AI-p
 }
 ```
 
-The dataset-side mod-109 chapter emits the Dataset-profile element and *reserves* the AI-profile element shape. The actual AI-profile element is typically written by `fine-tuning-engineer` or `training-pipeline-engineer` when the model's training run produces the final artifact; this module writes the dataset-side companion.
-
-<!-- needs-research: confirm the exact SPDX 3.0.1 property names for the AI profile (`aiSystemType`, `safetyRiskAssessment`, `modelDataPreprocessing`, `autonomyType`). The 3.0 → 3.0.1 refinement renamed several fields. -->
+The dataset-side mod-109 chapter emits the Dataset-profile element and *reserves* the AI-profile element shape. The actual AI-profile element is typically written by `fine-tuning-engineer` or `training-pipeline-engineer` when the model's training run produces the final artifact; this module writes the dataset-side companion. The properties above — `typeOfModel`, `safetyRiskAssessment`, `modelDataPreprocessing`, `autonomyType`, `hyperparameter`, `informationAboutApplication`, `limitation` — are all members of the SPDX 3.0.1 `AIPackage` class ([spdx.github.io/spdx-spec/v3.0.1/model/AI/Classes/AIPackage](https://spdx.github.io/spdx-spec/v3.0.1/model/AI/Classes/AIPackage/)); note that there is no `aiSystemType` property — the model-family slot is `typeOfModel`.
 
 ### Emitting with `spdx-tools`
 
@@ -338,7 +334,7 @@ def to_json_ld(doc: SpdxDocument, path: str) -> None:
     write_document(doc, path)
 ```
 
-<!-- needs-research: confirm the current SPDX 3.0 Python tooling package name (`spdx-tools` vs. `spdx-python-tools` vs. a successor) and its 3.0.x API at read time. -->
+The PyPI package is [`spdx-tools`](https://pypi.org/project/spdx-tools/) (source: [github.com/spdx/tools-python](https://github.com/spdx/tools-python)); the SPDX 3.x code lives in the `spdx_tools.spdx3` subpackage and is still marked experimental as of 0.8.5 (pin `spdx-tools>=0.8.5`; the 3.x surface is primarily write-oriented and the exact class names should be checked against the release you pin).
 
 ### Validation and signing
 
@@ -372,11 +368,9 @@ The dataset side is the hardest to produce after the fact — hence this module.
 
 ## Catalog integration — where the records land
 
-- **DataHub** can ingest CycloneDX BOMs via the `cyclonedx` source and SPDX documents via the `spdx` source. The BOM / SPDX properties end up as dataset `customProperties` in the catalog, searchable and browsable.
+- **DataHub** does not ship a first-party CycloneDX or SPDX ingestion source as of Nov 2026 (not present in the [ingestion sources index](https://docs.datahub.com/docs/generated/ingestion/sources/) or the [source tree](https://github.com/datahub-project/datahub/tree/master/metadata-ingestion/src/datahub/ingestion/source)); teams integrate BOM / SPDX records by writing a small custom source on the DataHub Python emitter that attaches the BOM / SPDX properties as dataset `customProperties`, searchable and browsable in the catalog.
 - **Unity Catalog** does not natively ingest BOM / SPDX, but can reference them from a dataset's URL properties. Enterprise procurement typically consumes the BOM from the dataset page URL.
 - **OpenLineage** events can carry a `aicg.supplyChain` custom facet that links to the BOM / SPDX / attestation URLs. Marquez and DataHub surface these on the dataset / run view.
-
-<!-- needs-research: confirm DataHub has a first-party CycloneDX source; the plugin exists but has moved between the `datahub-cyclonedx` package and a built-in `cyclonedx` recipe. -->
 
 ## Peer coordination
 

@@ -116,7 +116,7 @@ dvc pull     # downloads data/raw/ from s3://example-dvc-remote/sft-chat-owned-u
 **Operating notes that trip teams up:**
 
 - `dvc add` on a *directory* hashes every file and records a directory hash. Adding 100M small files is slow and wasteful; prefer sharded Parquet or a tarball-of-shards if the files are tiny.
-- The default hash is MD5, for backwards compatibility. For new projects, set `cache.type` to `hash: sha256` (DVC 3.0+) to align with Sigstore and CycloneDX SHA-256 defaults. <!-- needs-research: confirm the DVC 3.x option name for switching the hashing algorithm; Iterative has renamed it at least once. -->
+- DVC 3.x uses MD5 for cache content addressing, and the algorithm is not user-configurable — the `.dvc` file spec states only `md5` is currently supported ([dvc.org .dvc file spec](https://dvc.org/doc/user-guide/project-structure/dvc-files), [tracking issue #3069](https://github.com/iterative/dvc/issues/3069)). To align with Sigstore and CycloneDX SHA-256 defaults, compute a separate SHA-256 Merkle manifest over the DVC-tracked bytes at snapshot time and sign that (see "Hashes, signatures, and the mod-109 chain" below).
 - `dvc.lock` is the reproducibility contract. Treat it like `package-lock.json` — commit it, review diffs, and investigate unexpected hash changes before merging.
 - Reflinks on APFS / XFS / Btrfs avoid double-storing cache entries in the working tree. On ext4 / NTFS without reflink support DVC falls back to copies; set `cache.type` to `reflink,hardlink,symlink,copy` in `.dvc/config` for the best-available behaviour.
 
@@ -227,9 +227,8 @@ DVC's MD5-by-default hashing is a weak point for AI supply-chain use cases. MD5 
 
 Options:
 
-1. **Switch DVC to SHA-256.** Configure `cache.hash: sha256` in `.dvc/config`. This aligns DVC's content-addressing with CycloneDX and Sigstore defaults. <!-- needs-research: confirm this is the current DVC 3.x option; the option name has moved between major versions. -->
-2. **Re-hash under SHA-256 at snapshot time.** Independent of DVC's internal cache hashing, compute a Merkle manifest over the snapshot files with SHA-256 and store it alongside the `.dvc` file. `cosign sign-blob` signs the SHA-256 Merkle root (Chapter 08).
-3. **Stop trusting DVC hashes for supply-chain purposes.** Treat the `.dvc` file as a *pointer* only; derive snapshot identity from the SHA-256 Merkle manifest and bind the signature to that. This is the posture most regulated-use-case pipelines settle on.
+1. **Re-hash under SHA-256 at snapshot time.** DVC 3.x does not expose a public config option to switch the cache hash algorithm — `.dvc` files are MD5-only ([dvc/issues/3069](https://github.com/iterative/dvc/issues/3069)). Instead, compute a Merkle manifest over the snapshot files with SHA-256 and store it alongside the `.dvc` file. `cosign sign-blob` signs the SHA-256 Merkle root (Chapter 08).
+2. **Stop trusting DVC hashes for supply-chain purposes.** Treat the `.dvc` file as a *pointer* only; derive snapshot identity from the SHA-256 Merkle manifest and bind the signature to that. This is the posture most regulated-use-case pipelines settle on.
 
 Either way, the output of this chapter at snapshot time is a *content-hash record* (Chapter 01 identity field #1) that downstream Sigstore and SLSA chapters (08, 09) sign.
 

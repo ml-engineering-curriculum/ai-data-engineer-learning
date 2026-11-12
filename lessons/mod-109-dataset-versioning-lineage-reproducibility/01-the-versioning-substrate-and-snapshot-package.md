@@ -86,7 +86,7 @@ As in every other module in this track, the framing lands on the ISO/IEC 25012 v
 | **Recoverability** | Snapshot immutability + object-store versioning + signed hashes mean a corrupt or deleted current state is recoverable to a known-good prior state. |
 | **Compliance** | EU AI Act Article 53(1)(a) + Annex XI require training-data summaries by snapshot; the snapshot package is the evidence. |
 
-**ISO/IEC 5259-4** (*AI — Data quality for analytics and machine learning — Part 4: Data quality process framework*) treats versioning and lineage as named processes within the data-quality lifecycle. The deliverable at the end of this module is the artifact that implements that scope for your slice. <!-- needs-research: confirm the ISO/IEC 5259-4 clause and whether it names dataset-versioning explicitly or only via its lifecycle processes. -->
+**ISO/IEC 5259-4:2024** (*AI — Data quality for analytics and machine learning — Part 4: Data quality process framework*) frames data lineage inside the governance requirements of its data-quality lifecycle ([iso.org/standard/81093](https://www.iso.org/standard/81093.html)); it does not call out dataset versioning as a stand-alone named process, but the lifecycle processes it does define (acquisition, preparation, labelling, provisioning, decommissioning) are the natural home for snapshot discipline. The deliverable at the end of this module is the artifact that implements that scope for your slice.
 
 ## The substrate decision — four shapes
 
@@ -157,11 +157,9 @@ Mark the boundary explicitly:
 
 ## The regulatory frame — why this module is load-bearing
 
-The EU AI Act Article 53(1)(a) and Annex XI require providers of general-purpose AI models to publish a *sufficiently detailed summary* of training data. Article 53(1)(c) requires a *copyright policy*. Both reference training-data *summaries* at a level of detail that implies — and the EU AI Office GPAI Code of Practice makes explicit — that the provider can bind the summary to the exact training-data set they used. That binding is the snapshot package.
+The EU AI Act Article 53(1)(a) and Annex XI require providers of general-purpose AI models to publish a *sufficiently detailed summary* of training data. Article 53(1)(c) requires a *copyright policy*. Both reference training-data *summaries* at a level of detail that — operationalised by the European Commission's mandatory training-content summary template and the GPAI Code of Practice (published 10 July 2025, endorsed by the Commission and AI Board 1 August 2025; see [digital-strategy.ec.europa.eu/en/policies/contents-code-gpai](https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai) and the [template FAQ](https://digital-strategy.ec.europa.eu/en/faqs/template-general-purpose-ai-model-providers-summarise-their-training-content)) — requires an aggregated narrative across specified data-source categories rather than a work-by-work manifest, but still requires that the provider can trace the summary back to the training-data set that produced the model. That traceability is the snapshot package.
 
 The FDA GMLP / PCCP framework for medical-device AI requires change-management evidence, which in practice means per-release snapshot IDs and lineage back to source records. SR 11-7 (Fed banking supervision) and the Colorado AI Act require similar audit trails. In none of these regimes does an unsigned filesystem path pass review.
-
-<!-- needs-research: confirm the controlling version of the EU AI Act GPAI Code of Practice and the exact signatory list at read time; the text and signatories evolve on roughly a six-month cycle. -->
 
 ## Summary
 

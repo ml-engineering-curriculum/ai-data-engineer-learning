@@ -42,14 +42,13 @@ DataHub exposes an **OpenLineage-compatible ingestion endpoint**. Point your pip
 transport = {"type": "http", "url": "https://datahub.example.com:8080/openapi/openlineage/api/v1/lineage"}
 ```
 
-DataHub translates incoming OpenLineage `START` / `COMPLETE` events into:
+DataHub translates incoming OpenLineage `START` / `COMPLETE` events (POST to GMS at `/openapi/openlineage/api/v1/lineage`, per the current [DataHub OpenLineage docs](https://docs.datahub.com/docs/lineage/openlineage/)) into:
 
 - A `Dataset` entity per input / output (created if absent).
 - A `DataJob` entity per job.
-- An `upstreamLineage` aspect wiring them together.
-- Custom-facet payloads translated into `datasetProperties` or `customProperties`.
-
-<!-- needs-research: confirm the current DataHub OpenLineage endpoint path (`/openapi/openlineage/api/v1/lineage`) and the exact facet-to-aspect mapping. The adapter has evolved across DataHub 0.11 → 0.13 → 0.14 releases. -->
+- An `UpstreamLineage` / `FineGrainedLineage` aspect wiring them together (from the `columnLineage` facet).
+- `SchemaMetadata` from the `schema` facet, `Operation` time-series from `outputStatistics` + `lifecycleStateChange`, `DatasetProfile` from `dataQualityMetrics`, `GlobalTags` / `Ownership` / `DatasetProperties` / `InstitutionalMemory` from their respective facets (see the [`openlineage-converter` module](https://docs.datahub.com/docs/metadata-integration/java/openlineage-converter) for the full mapping; coverage expanded substantially in [PR #19734](https://github.com/datahub-project/datahub/pull/19734)).
+- Remaining custom-facet payloads translated into `datasetProperties` or `customProperties`.
 
 In addition, DataHub has first-party *sources* that extract lineage directly from the substrate: dbt artifacts, Airflow (via plugin), Databricks, Snowflake, BigQuery, Kafka, Hive Metastore, Glue, Delta, Iceberg, and many others. These composeable sources mean DataHub can often reconstruct a lineage graph from the substrate even without OpenLineage emission — useful for retrofitting onto legacy pipelines.
 
@@ -141,18 +140,23 @@ WHERE source_table_full_name = 'aicg.default.sft_chat_owned_ugc_2026_q3'
   AND event_date >= current_date() - INTERVAL 90 DAYS
 ORDER BY event_time DESC;
 
--- every downstream ML model that trained on a version of this table
+-- every downstream MLflow run that read a version of this table; join to MLflow's
+-- experiment / run system tables (schema `system.mlflow`) to get the trained model.
+-- Note: there is no `system.ml.models` system table as of Nov 2026 — registered
+-- models live in `information_schema` and the models API; the schemas documented
+-- under https://docs.databricks.com/aws/en/admin/system-tables/ that touch ML are
+-- `system.mlflow` (experiments, runs, metrics) and `system.serving` (endpoints).
 SELECT DISTINCT
-  models.full_name,
-  models.model_version,
-  models.most_recent_training_run_id
+  runs.experiment_id,
+  runs.run_id,
+  runs.start_time
 FROM system.access.table_lineage AS lineage
-JOIN system.ml.models AS models
-  ON lineage.target_table_full_name = models.training_dataset
+JOIN system.mlflow.runs_latest AS runs
+  ON lineage.entity_run_id = runs.run_id
 WHERE lineage.source_table_full_name = 'aicg.default.sft_chat_owned_ugc_2026_q3';
 ```
 
-<!-- needs-research: confirm current `system.access.*` table columns and the `system.ml.models` surface; UC adds columns regularly. -->
+(Full current column list for `system.access.table_lineage` / `column_lineage` is in the [system-tables lineage reference](https://docs.databricks.com/aws/en/admin/system-tables/lineage); the lesson uses the stable subset.)
 
 The SQL interface is a strong point — the impact analysis is a dashboard-shaped artifact a data engineer can share with the team.
 

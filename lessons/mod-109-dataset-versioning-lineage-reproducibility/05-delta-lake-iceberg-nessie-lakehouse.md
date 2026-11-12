@@ -304,11 +304,9 @@ Both Delta and Iceberg have OpenLineage integration via Spark:
 
 - **Spark + OpenLineage.** The `openlineage-spark` listener emits `START` and `COMPLETE` events for every Spark SQL / DataFrame operation, with dataset facets pointing at the Delta / Iceberg tables involved. Chapter 06.
 - **Databricks Unity Catalog.** Unity Catalog maintains its own lineage graph natively; it also emits OpenLineage events. Chapter 07.
-- **Nessie commits.** Each Nessie commit can emit an OpenLineage event via the Nessie events API or a webhook.
+- **Nessie commits.** Nessie exposes a first-party [Events SPI](https://projectnessie.org/nessie-latest/configuration/) (`EventSubscriber` / `EventListener`) with shipped Kafka/NATS/stdout subscribers, but no OpenLineage subscriber is shipped by the project — bridge Nessie events to OpenLineage via a user-written subscriber, or rely on the Spark / Trino OpenLineage listener recognising Nessie catalogs (see [OpenLineage PR #2165](https://github.com/OpenLineage/OpenLineage/pull/2165)).
 
 The payoff is a lineage graph that follows the data through Spark jobs, Delta / Iceberg tables, and Nessie branches without per-stage custom code.
-
-<!-- needs-research: confirm the current OpenLineage adapter surface for Nessie specifically; the integration has moved between a native event listener and a webhook pattern. -->
 
 ## Peer uses in the track — where this substrate lands
 

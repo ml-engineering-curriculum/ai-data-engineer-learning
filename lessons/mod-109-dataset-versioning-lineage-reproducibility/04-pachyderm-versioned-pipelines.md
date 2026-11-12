@@ -171,7 +171,7 @@ A pinned snapshot URL for downstream consumers is a Pachyderm commit ID on the t
 
 Pachyderm's `pachctl inspect job <job-id>` command prints the job's input commits, output commit, pipeline version, transform image, and runtime stats. Every output commit carries a *provenance graph* — the set of input commits (and recursively, their input commits) that produced it. This is Pachyderm-native lineage; it is strong, and it is already content-addressed.
 
-**It is not, however, OpenLineage.** Pachyderm's lineage lives inside the Pachyderm server; a downstream consumer (Marquez, DataHub, Unity Catalog) sees nothing unless you emit OpenLineage events. The integration pattern:
+**It is not, however, OpenLineage.** Pachyderm's lineage lives inside the Pachyderm server; a downstream consumer (Marquez, DataHub, Unity Catalog) sees nothing unless you emit OpenLineage events. Pachyderm does not ship a first-party OpenLineage adapter (it is not listed in the [OpenLineage integrations index](https://openlineage.io/docs/integrations/)); the integration is a self-authored sidecar pattern. The typical shape:
 
 - A Pachyderm-side hook or sidecar translates each job's `COMPLETE` into an OpenLineage event with:
   - `job.name` = the pipeline name (`pdf-to-markdown`, `firewall`, `scrub-pii`).
@@ -181,8 +181,6 @@ Pachyderm's `pachctl inspect job <job-id>` command prints the job's input commit
   - `outputs[]` = dataset facets for the output commit.
   - `run.facets.sourceCode.gitSha` = the transform image's source commit.
 - The hook runs on every pipeline completion and sends to Marquez / DataHub via their OpenLineage HTTP endpoints.
-
-<!-- needs-research: confirm whether Pachyderm's current release ships a first-party OpenLineage adapter or whether this remains a self-authored sidecar pattern. -->
 
 ## Operating notes
 

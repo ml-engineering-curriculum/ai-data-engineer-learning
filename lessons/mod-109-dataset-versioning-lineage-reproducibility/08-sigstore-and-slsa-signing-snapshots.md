@@ -268,20 +268,20 @@ Success means the attestation is bound to the exact Merkle manifest, signed by t
 
 SLSA v1.0 defines four *tracks* (Build, Source, Dependencies, with Source and Dependencies reserved for future work). The **Build track** has levels 0 → 1 → 2 → 3:
 
-- **Level 0** — no provenance. The default state.
-- **Level 1** — provenance exists. The pipeline produces a SLSA attestation describing the build.
-- **Level 2** — provenance is produced by a hardened build service (tamper-resistant builder). The build runs on infrastructure that prevents retroactive modification of the provenance.
-- **Level 3** — the build platform is hardened against insider threats. Isolation of each build, non-forgeable provenance, no third-party-controlled parameters that can tamper with provenance.
+The current controlling spec is SLSA v1.2 (Approved — [slsa.dev/spec/v1.2](https://slsa.dev/spec/v1.2/)), which promotes the Source track (L1–L4) to Approved alongside the Build track (L0–L3). The Build-track levels as stated in [v1.2/build-track-basics](https://slsa.dev/spec/v1.2/build-track-basics):
+
+- **Level 0** — no guarantees. No requirements; represents the lack of SLSA.
+- **Level 1** — provenance exists. The package has provenance showing how it was built; useful for mistake-prevention but trivial to bypass or forge.
+- **Level 2** — hosted build platform. Provenance is generated and signed by a hosted build platform; forging it or evading verification requires an explicit attack.
+- **Level 3** — hardened builds. Strong controls prevent build interference and protect signing secrets so that forging provenance or evading verification requires exploiting a vulnerability beyond most adversaries. (The older "hardened against insider threats" framing came from pre-1.0 drafts; v1.0+ phrases this as hardened against tampering/forgery by build users.)
 
 For AI training-data pipelines:
 
 - **Level 1 is the floor.** You can achieve it with a GitHub Actions workflow + `cosign attest-blob`. This is the "unsigned is unacceptable" minimum.
-- **Level 2** requires a tamper-resistant builder. GitHub Actions with the `slsa-github-generator` project can meet level 2 for container images; for dataset snapshots the equivalent is a build service that signs the provenance from inside its own trust boundary (not the user's workflow code). Buildkite's Workload Identity + Fulcio, GCP Cloud Build + Binary Authorization, or a hosted CI with OIDC federation are typical approaches.
+- **Level 2** requires a hosted build platform that generates and signs provenance from inside its own trust boundary (not the user's workflow code). GitHub Actions with the `slsa-github-generator` project can meet Build L2 for container images; for dataset snapshots the equivalent is Buildkite's Workload Identity + Fulcio, GCP Cloud Build + Binary Authorization, or a hosted CI with OIDC federation.
 - **Level 3** is reserved for the highest-assurance regimes — regulated use cases, model-release provenance for GPAI providers subject to AI Act Article 53, medical-device AI subject to FDA GMLP.
 
 Target **SLSA Build L2** for a production AI training-data pipeline. L1 is a reasonable milestone for an internal-only training run; L2 is the minimum for a snapshot that will be released externally or fed into a regulated use case.
-
-<!-- needs-research: confirm the SLSA v1.0 track / level definitions and the latest controlling specification revision at read time; SLSA 1.0 vs. 1.1 vs. subsequent is an active area. -->
 
 ## Storing signatures — where the bytes live
 

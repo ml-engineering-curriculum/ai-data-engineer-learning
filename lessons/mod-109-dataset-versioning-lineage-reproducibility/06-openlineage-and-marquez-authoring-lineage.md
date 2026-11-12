@@ -132,18 +132,16 @@ Register the extractor via the `openlineage_extractors` entry point.
 
 ### 2. Dagster
 
-Dagster has first-party OpenLineage emission. In `dagster.yaml`:
+Dagster has an OpenLineage integration shipped as the community-maintained [`dagster-openlineage`](https://pypi.org/project/dagster-openlineage/) package (module `dagster_openlineage`; moved out of the OpenLineage monorepo in late 2025 — see [docs.dagster.io/integrations/libraries/openlineage](https://docs.dagster.io/integrations/libraries/openlineage)). The package offers two wiring mechanisms: an event-log-storage wrapper (`OpenLineageEventLogStorage`, configured in `instance.yaml`) or an asset sensor (`openlineage_sensor`) attached to the user's `Definitions`. Configuration is driven by environment variables (`OPENLINEAGE_URL`, `OPENLINEAGE_API_KEY`, `OPENLINEAGE_NAMESPACE`), not a run-coordinator block. An illustrative storage-wrapper config:
 
 ```yaml
-run_coordinator:
+# instance.yaml — illustrative; verify against current dagster-openlineage docs
+event_log_storage:
   module: dagster_openlineage
-  class: OpenLineageRunCoordinator
-  config:
-    url: https://marquez.example.com:5000
-    namespace: aicg-datapipeline
+  class: OpenLineageEventLogStorage
 ```
 
-Dagster's `@asset` and `@op` decorators emit events automatically; `MaterializeResult.metadata` is translated into dataset facets. <!-- needs-research: confirm the current Dagster + OpenLineage integration package name and configuration; both have moved. -->
+Dagster's `@asset` and `@op` decorators emit events automatically; `MaterializeResult.metadata` is translated into dataset facets.
 
 ### 3. Spark
 
@@ -152,7 +150,9 @@ OpenLineage's Spark listener (`io.openlineage:openlineage-spark`) hooks into Spa
 ```python
 spark = (
     SparkSession.builder
-    .config("spark.jars.packages", "io.openlineage:openlineage-spark_2.12:1.14.0")
+    # Pin to a current release — as of Nov 2026, 1.55.0 is the latest.
+    # See https://openlineage.io/docs/integrations/spark/ for the current Spark compatibility matrix.
+    .config("spark.jars.packages", "io.openlineage:openlineage-spark_2.12:1.55.0")
     .config("spark.extraListeners", "io.openlineage.spark.agent.OpenLineageSparkListener")
     .config("spark.openlineage.transport.type", "http")
     .config("spark.openlineage.transport.url", "https://marquez.example.com:5000")
@@ -161,9 +161,7 @@ spark = (
 )
 ```
 
-Every Spark SQL / DataFrame action emits events with dataset facets pointing at the Delta / Iceberg tables involved. Column-level lineage is captured automatically where the plan permits.
-
-<!-- needs-research: cite the current openlineage-spark coordinates + Spark version matrix at read time; the matrix evolves per quarterly release. -->
+Every Spark SQL / DataFrame action emits events with dataset facets pointing at the Delta / Iceberg tables involved. Column-level lineage is captured automatically where the plan permits. `openlineage-spark` ships Scala 2.12 and 2.13 artifacts to Maven Central ([mvnrepository](https://mvnrepository.com/artifact/io.openlineage/openlineage-spark)) and supports Spark 3.2–3.5, 4.0, and 4.2 as of the 1.55.0 line (Spark 2 removed in 1.37.0; no 4.1 support).
 
 ### 4. Python pipelines (explicit emission)
 
@@ -287,7 +285,7 @@ Treat column-level lineage as a *bonus* that comes for free from the Spark liste
 
 - **Transport.** HTTP POST to the consumer is the default. For production, prefer a *buffered* transport (Kafka, SQS) so a Marquez outage does not take down the pipeline. OpenLineage supports a Kafka transport natively; a file transport is a reasonable fallback for local development.
 - **Namespaces.** Use one per data domain (`aicg-datapipeline-sft-chat`, `aicg-datapipeline-pretrain`). Do *not* use a single global namespace; the graph becomes unreadable.
-- **Dataset naming.** Follow the OpenLineage naming conventions. For object-storage: `(namespace=s3://bucket, name=path/to/object)`; for Hive-style tables: `(namespace=<catalog>://<cluster>, name=<db>.<table>)`. The specification pins per-system conventions; adhere to them so downstream consumers can disambiguate. <!-- needs-research: cite the current OpenLineage dataset-naming spec URL. -->
+- **Dataset naming.** Follow the OpenLineage naming conventions ([openlineage.io/docs/spec/naming](https://openlineage.io/docs/spec/naming)). For object-storage: `(namespace=s3://bucket, name=path/to/object)`; for Hive-style tables: `(namespace=<catalog>://<cluster>, name=<db>.<table>)`. The specification pins per-system conventions across 30+ systems (Snowflake, BigQuery, Redshift, HDFS, S3, Kafka, Pub/Sub, etc.); adhere to them so downstream consumers can disambiguate.
 - **`parent.runId`.** Every nested run should set `run.facets.parent.runId` to the enclosing run. An Airflow DAG run spawns task runs; a Spark SQL statement spawns Delta commit runs. The parent linkage is what makes the graph navigable.
 - **Backfills.** Events for historical runs can be emitted after the fact with a correct `eventTime`. Marquez / DataHub consume them as a backfill. Useful when adding lineage to a pre-existing pipeline.
 

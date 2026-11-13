@@ -19,9 +19,9 @@ If your organisation ships a GPAI model, Article 53 applies. If the model is des
 
 ### Timeline
 
-Article 53 applies from **2 August 2025**. Article 55 systemic-risk obligations apply from the same date. The AI Office began publishing the official public-summary template in advance of that date to allow providers to prepare. <!-- needs-research: cite the official AI Office page for the template, including version and publication date at the time the student reads this chapter. -->
+Article 53 applies from **2 August 2025**. Article 55 systemic-risk obligations apply from the same date. The AI Office published its "Explanatory Notice and Template for the Public Summary of Training Content for general-purpose AI models" on 24 July 2025, ahead of that date; the template is hosted at <https://digital-strategy.ec.europa.eu/en/library/explanatory-notice-and-template-public-summary-training-content-general-purpose-ai-models>.
 
-The **General-Purpose AI Code of Practice** is the voluntary code that specifies how providers interpret Article 53 obligations in practice. Signing the Code is not required by the Act but is the current best available guide to AI Office expectations; signatories commit to following the Code of Practice's specific methods. <!-- needs-research: cite the Code of Practice page and current signatory list at reading time. -->
+The **General-Purpose AI Code of Practice** is the voluntary code that specifies how providers interpret Article 53 obligations in practice. Signing the Code is not required by the Act but is the current best available guide to AI Office expectations; signatories commit to following the Code of Practice's specific methods. The Code was finalised on 10 July 2025 and is published at <https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai>; early signatories include Anthropic, Google, IBM, Microsoft, Mistral AI, OpenAI, Cohere, Amazon and others, with Meta a notable non-signatory. Check the Commission's page for the current list.
 
 ### Article 53's four obligations (quick recap from mod-101)
 
@@ -120,7 +120,7 @@ Article 53(1)(d) uses the qualifier "sufficiently detailed" without defining it 
 2. **An academic or civil-society reviewer can identify the *kinds* of content in the mix.** Not what *specific* data point is present, but whether code, medical text, social-media, child-directed content, licensed news, or other named categories are in the mix.
 3. **A regulator can audit the stated process.** Every claim in the public summary must be matched by evidence in the Annex XI private package. A regulator can request the private package and verify.
 
-A summary that fails any of these three is "insufficiently detailed" by the Code of Practice standard. <!-- needs-research: cross-reference the exact Code of Practice language on sufficiency at reading time; signatory commitments may further specify. -->
+A summary that fails any of these three is "insufficiently detailed" by the Code of Practice standard — the Code's Transparency chapter and the AI Office template frame sufficiency as *comprehensive in scope* (covering each source category in narrative form) rather than *technically detailed* (per-URL enumeration). Check the current Code at <https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai> and the signatory commitments for any further specification.
 
 ## The Annex XI private package — what goes to the AI Office
 

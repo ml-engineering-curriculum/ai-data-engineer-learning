@@ -30,7 +30,7 @@ Your contribution flows into sections 5 (Evaluation data) and 6 (Training data).
 
 ### System cards — AI system / product-level documentation
 
-System cards document the deployed AI system — the model plus the surrounding product, including guardrails, retrieval augmentation, routing logic, evaluation harnesses, and operational monitoring. The format is less standardised than the model card but has conventional sections documented in system-card releases from OpenAI (GPT-4 system card, GPT-4V system card, GPT-4o system card), Anthropic (Claude system cards), Google DeepMind (Gemini safety cards), and others. <!-- needs-research: cite the exact system-card URLs for current GPT-4-family, Claude-family, and Gemini-family systems at reading time; the system-card concept predates the EU AI Act's Article 53 regime but anticipates many of its concerns. -->
+System cards document the deployed AI system — the model plus the surrounding product, including guardrails, retrieval augmentation, routing logic, evaluation harnesses, and operational monitoring. The format is less standardised than the model card but has conventional sections documented in system-card releases from OpenAI (the GPT-4 System Card embedded in arXiv:2303.08774 at <https://arxiv.org/abs/2303.08774>, and the GPT-4o System Card at <https://arxiv.org/abs/2410.21276>), Anthropic (Claude system cards, indexed from the Transparency Hub at <https://www.anthropic.com/transparency>), and Google DeepMind (Gemini safety/model cards published at <https://deepmind.google/models/gemini/>). The system-card concept predates the EU AI Act's Article 53 regime but anticipates many of its concerns; check each vendor's current index page for the latest card versions.
 
 A system card typically covers:
 

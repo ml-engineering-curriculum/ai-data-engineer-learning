@@ -14,7 +14,7 @@ Three primary references, in order:
 - **Template repo**: <https://github.com/huggingface/datasets/blob/main/templates/README.md>. The canonical template you copy to start a new card. The HF `datasets` library ships a CLI that scaffolds a card for you.
 - **Metadata schema**: <https://github.com/huggingface/hub-docs/blob/main/docs/hub/datasets-cards.md> (and the YAML specification in `huggingface_hub`'s `ModelCard` / `DatasetCard` modules).
 
-Pin the template version you authored against in your dataset repo (`.hf_template_version:` as a comment at the top of the card). When HF ships a template revision, you can diff it against your base and decide whether to upgrade. <!-- needs-research: confirm the exact mechanism / field HF currently suggests for pinning template versions at the time of reading; may be a convention rather than a schema requirement. -->
+Pin the template version you authored against in your dataset repo — the Hub's YAML schema does not require this, but recording it as a comment at the top of the card (for example `# hf_template_version: <commit-sha-or-date>`) is a lightweight team convention. When HF ships a template revision, you can diff it against your base and decide whether to upgrade.
 
 ## The structure, section by section
 

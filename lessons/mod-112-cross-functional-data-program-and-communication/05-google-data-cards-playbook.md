@@ -9,7 +9,7 @@ The Data Cards Playbook is both a *form* and a *methodology*. Pushkarna et al. (
 ## Where the template lives
 
 - **Paper**: Pushkarna, M., Zaldivar, A., & Kjartansson, O. (2022). *Data Cards: Purposeful and Transparent Dataset Documentation for Responsible AI.* FAccT '22.
-- **Playbook site**: <https://sites.research.google/datacardsplaybook/>. The site hosts the template, example cards, and the authoring process guide. <!-- needs-research: verify Playbook URL is current at reading time; Google Research periodically reorganises its site. -->
+- **Playbook site**: <https://sites.research.google/datacardsplaybook/>. The site hosts the template, example cards, and the authoring process guide.
 - **GitHub mirror**: <https://github.com/PAIR-code/datacardsplaybook>.
 
 The playbook presents the card as a visually-formatted document. In practice teams ship it as a long-form markdown file with headings that match the playbook's sections; the visual polish is applied at render time (e.g. by a Google Docs or web template). The content is what matters.

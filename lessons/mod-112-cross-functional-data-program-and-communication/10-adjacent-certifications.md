@@ -43,7 +43,7 @@ The exam is reference-material-permitted, meaning you can bring the DMBOK book i
 
 ### Cost and time
 
-Associate: ~$300 USD exam fee plus study; 40–60 hours of prep is typical for someone already working in data. Practitioner: ~$500 USD plus specialty-exam fees; 100–150 hours for the three exams combined. <!-- needs-research: confirm current exam fees at DAMA International's site at reading time. -->
+Associate: DAMA lists the base exam at ~$300 USD (with an ~$11 proctor fee for online-proctored exams), plus study; 40–60 hours of prep is typical for someone already working in data. Practitioner adds two further specialty exams at the same per-exam rate; 100–150 hours for the three exams combined. Check <https://dama.org/cdmp-frequently-asked-questions/> for the current fee schedule.
 
 ## 2. IAPP CIPP/E (or CIPP/US)
 
@@ -79,7 +79,7 @@ The CIPP syllabus is memorisation-heavy (unlike CDMP, which is reference-permitt
 
 ### Cost and time
 
-CIPP/E or CIPP/US: ~$550 USD exam fee for IAPP members (membership recommended at ~$300/year), plus the official textbook. 80–120 hours of prep is typical for someone not already a privacy professional. <!-- needs-research: verify current IAPP fees at reading time. -->
+CIPP/E or CIPP/US: ~$550 USD exam fee (IAPP currently prices the first attempt identically for members and non-members; a ~$375 reduced rate applies to retakes or candidates already holding another IAPP certification), plus the official textbook. IAPP membership (~$295/year) bundles the certification-maintenance fee. 80–120 hours of prep is typical for someone not already a privacy professional. Confirm current fees at the IAPP store pages (<https://store.iapp.org/cipp-e-exam/>, <https://store.iapp.org/cipp-us-exam/>).
 
 ## 3. IAPP AIGP — Artificial Intelligence Governance Professional
 
@@ -112,7 +112,7 @@ The AIGP is the certification whose syllabus maps *most directly* to what this t
 
 ### Cost and time
 
-AIGP: ~$750 USD exam fee for IAPP members plus the textbook. 60–100 hours of prep is typical for a data engineer who has done this track or equivalent. <!-- needs-research: verify current AIGP fee and syllabus version at reading time. -->
+AIGP: IAPP currently lists the exam at ~$649 USD for members and ~$799 for non-members (annual membership ~$295 narrows the gap), plus the textbook. 60–100 hours of prep is typical for a data engineer who has done this track or equivalent. Confirm fee and current body-of-knowledge version at <https://iapp.org/certify/aigp/>.
 
 ## 4. ISO/IEC 42001 Lead Implementer
 
@@ -142,7 +142,7 @@ A separate **Lead Auditor** credential exists; if you intend to *audit* organisa
 
 ### Cost and time
 
-Lead Implementer: ~$1,500–$2,500 USD for the course + exam package, depending on provider. 40–60 hours of course time plus prep. Many providers bundle the 42001 standard document itself. <!-- needs-research: confirm current PECB / BSI / other-provider pricing at reading time. -->
+Lead Implementer: pricing ranges widely by provider — PECB self-study and eLearning packages currently start around ~$600–$900 USD (with the exam voucher often bundled), while instructor-led courses from larger training bodies (including BSI) run into the low thousands USD. 40–60 hours of course time plus prep. Many providers bundle the 42001 standard document itself. Confirm current pricing directly with PECB (<https://pecb.com/en>), BSI, or whichever accredited partner you plan to use.
 
 ## Choosing two of four
 

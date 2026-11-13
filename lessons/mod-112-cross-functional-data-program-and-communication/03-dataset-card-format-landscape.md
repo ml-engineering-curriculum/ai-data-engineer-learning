@@ -46,7 +46,7 @@ The card itself is a structured, visually formatted document (originally designe
 
 Primary audience: **a non-engineering stakeholder — policy, product management, external audit** — who needs to reason about the dataset without reading the loading code. Tone is explanatory; limitations and reflections are first-class.
 
-Reference: Pushkarna et al. "Data Cards: Purposeful and Transparent Dataset Documentation for Responsible AI", FAccT 2022; the Data Cards Playbook site at <https://sites.research.google/datacardsplaybook/>. <!-- needs-research: confirm the Playbook URL and latest template version at reading time. -->
+Reference: Pushkarna et al. "Data Cards: Purposeful and Transparent Dataset Documentation for Responsible AI", FAccT 2022; the Data Cards Playbook site at <https://sites.research.google/datacardsplaybook/>.
 
 ### Meta Data Cards / Llama-style disclosure
 
@@ -54,7 +54,7 @@ Meta's **Data Cards** are the format Meta publishes alongside its model releases
 
 Primary audience: **the external community of consumers, researchers, and regulators** reading a Meta model release. Tone is concise and policy-aware; it rarely cites a specific URL for a dataset shard but discloses *source-class* composition, token counts, cutoff dates, and the aggregate decontamination/PII posture. This is the shape foundation-model providers have converged on for public model releases where full source-URL disclosure is either commercially infeasible or contractually restricted.
 
-Primary reference example (not the only one): the Llama 3 release at <https://ai.meta.com/llama/>, with the Data Card published alongside the model card. <!-- needs-research: cite the exact Llama 3 (or current Llama) Data Card URL at the time the student reads this chapter; Meta updates the release pages over time. -->
+Primary reference example (not the only one): the Llama 3 release, with the Model Card published in the `meta-llama/llama3` GitHub repository (<https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md>) and the companion blog/launch page at <https://ai.meta.com/blog/meta-llama-3/>. Meta's release pages and the current Llama family index at <https://www.llama.com/> are updated over time.
 
 ## A field-by-field cross-reference
 

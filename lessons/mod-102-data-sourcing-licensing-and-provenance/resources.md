@@ -49,18 +49,18 @@ All chapters in this module are grounded in primary-source standards, regulation
 
 ## US copyright and the open litigation landscape
 
-- **US Copyright Office** — Copyright and Artificial Intelligence report, multi-part: <https://www.copyright.gov/ai/>. Part 1 (Digital Replicas), Part 2 (Copyrightability), Part 3 (Training). <!-- needs-research: cite the latest issued parts and any superseding guidance at read time. -->
+- **US Copyright Office** — Copyright and Artificial Intelligence report, multi-part: <https://www.copyright.gov/ai/>. Part 1 (Digital Replicas, July 2024), Part 2 (Copyrightability, January 2025), and Part 3 (Generative AI Training, pre-publication issued 9 May 2025). Check the Office's AI landing page for superseding guidance and any final-publication version of Part 3 at read time.
 - **17 U.S.C. §105** — US Government works and copyright. Cornell Legal Information Institute: <https://www.law.cornell.edu/uscode/text/17/105>.
 - **17 U.S.C. §107** — fair-use statute: <https://www.law.cornell.edu/uscode/text/17/107>.
-- **PACER / CourtListener** — track the open training-data cases (plaintiffs including The New York Times, Universal Music Group, Getty Images, Concord Music, Ziff Davis, and individual authors, with defendants including OpenAI, Microsoft, Anthropic, Meta, Stability AI, Perplexity, and others). <!-- needs-research: verify case status, docket numbers, and any settlements at read time without opining on the merits. -->
+- **PACER / CourtListener** — track the open training-data cases via the authoritative federal dockets. A non-exhaustive list of recurrently-cited plaintiffs includes news publishers (The New York Times), music rightsholders (Universal Music Group, Concord Music), stock-image owners (Getty Images), and individual authors; defendants include OpenAI, Microsoft, Anthropic, Meta, Stability AI, Perplexity, and others. Verify case status, docket numbers, and any settlements at read time from the dockets themselves without opining on the merits.
 
 ## Other jurisdictions
 
-- **Japan — Copyright Act Article 30-4** (as amended 2018). Japan Agency for Cultural Affairs guidance: <https://www.bunka.go.jp/>. <!-- needs-research: cite canonical English translation and any 2024-2025 guidance on AI training. -->
-- **UK — Intellectual Property Office (IPO)** consultation and position on TDM: <https://www.gov.uk/government/organisations/intellectual-property-office>. <!-- needs-research: cite current UK IPO consultation outcome / published position on AI and copyright. -->
+- **Japan — Copyright Act Article 30-4** (as amended 2018, in force from January 2019). Japan Agency for Cultural Affairs guidance: <https://www.bunka.go.jp/>. The Agency's Copyright Subcommittee finalised *General Understanding on AI and Copyright in Japan* on 15 March 2024, and the Agency published a companion *Checklist & Guidance on AI and Copyright* on 31 July 2024; both draw a line between training/development (covered by Article 30-4) and generation/output (ordinary infringement rules). Verify the canonical English translation and any superseding guidance at read time.
+- **UK — Intellectual Property Office (IPO)** consultation and position on TDM: <https://www.gov.uk/government/organisations/intellectual-property-office>. The *Copyright and AI* consultation (CP 1205) ran 17 December 2024 – 25 February 2025 and received over 11,500 responses; the government subsequently stepped back from its initially-preferred opt-out TDM exception and published a progress statement in December 2025 and a *Report on Copyright and Artificial Intelligence* in March 2026. Confirm the current published position at read time.
 - **Singapore — Copyright Act 2021 §243** (computational data analysis): Singapore Attorney-General's Chambers statutes database: <https://sso.agc.gov.sg/Act/CA2021>.
-- **South Korea — Copyright Act reforms** — Korea Copyright Commission: <https://www.copyright.or.kr/eng/>. <!-- needs-research: status of pending reforms at read time. -->
-- **China — generative-AI measures** (Cyberspace Administration of China and related regulators). <!-- needs-research: cite the current Interim Measures for the Management of Generative AI Services and related rules at read time. -->
+- **South Korea — Copyright Act reforms** — Korea Copyright Commission: <https://www.copyright.or.kr/eng/>. A proposed Copyright Act amendment introducing a text-and-data-mining regime for AI training is under review in the National Assembly; the Ministry of Culture, Sports and Tourism and the Korea Copyright Commission released companion AI–copyright guides in mid-2025. Confirm legislative status at read time.
+- **China — generative-AI measures** (Cyberspace Administration of China and related regulators). The *Interim Measures for the Management of Generative AI Services* were jointly issued by the CAC and six other agencies on 10 July 2023 and took effect 15 August 2023; the *Measures for Labeling of AI-Generated Synthetic Content* were subsequently issued in 2025. Verify the current text and any superseding rules at read time.
 
 ## US privacy regimes (reinforced from mod-101)
 
@@ -91,7 +91,7 @@ All chapters in this module are grounded in primary-source standards, regulation
 
 ## C2PA and the Content Authenticity Initiative
 
-- **C2PA** — Coalition for Content Provenance and Authenticity specifications: <https://c2pa.org/specifications/>. The specification versions at read time include the core specification and the extensions for AI training assertions. <!-- needs-research: cite the current spec version and the training-opt-out assertion names at read time. -->
+- **C2PA** — Coalition for Content Provenance and Authenticity specifications: <https://c2pa.org/specifications/>. The current core Content Credentials Technical Specification is 2.2 (1 May 2025); the training-opt-out assertion was removed from the core spec and is now maintained as the *Training and Data Mining Assertion* by the Creator Assertions Working Group (CAWG): <https://cawg.io/specs/>. Verify the current core spec version and the CAWG assertion version at read time.
 - **Content Authenticity Initiative (CAI)** — Adobe-led practitioner hub: <https://contentauthenticity.org/>.
 - **IPTC Photo Metadata Standard** — training-related rights tags that compose with C2PA: <https://iptc.org/standards/photo-metadata/>.
 - **c2pa-rs** — official Rust implementation and bindings: <https://github.com/contentauth/c2pa-rs>.

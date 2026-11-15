@@ -94,7 +94,7 @@ As in every other module in this track, the framing lands on the ISO/IEC 25012 v
 | **Confidentiality** | Tabular synthesis (Chapter 09) with DP is the mechanism for emitting training data that is formally bounded against membership-inference. Textual synthesis has weaker guarantees — a generator trained on PII can regurgitate it. |
 | **Traceability** | Every synthetic example traces to a seed (or an evolution lineage), a generator, a generation timestamp, a filter verdict, a firewall verdict. This is a [`mod-109`](../mod-109-dataset-versioning-lineage-reproducibility/README.md) lineage event. |
 
-**ISO/IEC 5259-3** (*AI — Data quality for analytics and machine learning — Part 3: Data quality management requirements and guidelines*) scopes **synthetic-data generation** as a managed data-quality activity within the training-data pipeline. The deliverable at the end of this module is the artifact that implements that scope for your slice. <!-- needs-research: confirm the 5259-3 clause numbers that pin synthetic-data management; the published edition has reorganised across revisions. -->
+The **ISO/IEC 5259 series** (*AI — Data quality for analytics and machine learning*) defines the broader data-quality management framework that a synthetic-generation programme has to live inside: Part 3 covers data-quality management requirements and guidelines, Part 4 the process framework, and Part 5 the governance framework. Synthetic generation is not called out as a standalone clause — it is a managed activity you run against that framework. The deliverable at the end of this module is the artifact that makes it visible as one. See the ISO catalogue entry for the current scope of each part (<https://www.iso.org/standard/81092.html>).
 
 ## What synthetic generation is — and what it isn't
 
@@ -121,7 +121,7 @@ Mark the boundary explicitly — it is often where organisations misfile work:
 
 ## The economic shape — why synthetic generation is a tooling problem
 
-A production synthetic-generation run routinely emits 10^5–10^7 examples. Per-example API-model cost depends on model, modality, and output length; the point is that **the generator compute cost is comparable in magnitude to the student model's SFT compute cost, and much smaller than its pretraining compute cost**. <!-- needs-research: avoid citing a specific per-token dollar figure; treat the shape qualitatively and point a reader to each vendor's current pricing page at authoring time. -->
+A production synthetic-generation run routinely emits 10^5–10^7 examples. Per-example API-model cost depends on model, modality, and output length — read each vendor's current pricing page at authoring time rather than quoting a per-token figure here. The point is that **the generator compute cost is comparable in magnitude to the student model's SFT compute cost, and much smaller than its pretraining compute cost**.
 
 Two operational consequences:
 

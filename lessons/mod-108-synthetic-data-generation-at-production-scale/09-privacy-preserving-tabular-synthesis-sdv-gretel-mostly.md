@@ -41,7 +41,7 @@ A synthesis tool produces a generator `G` trained on `T` and a synthetic table `
 
 What this means operationally:
 
-- `ε` (epsilon) is the **privacy budget**. Smaller is stronger. `ε ≤ 1` is often cited as strong; `ε ∈ [1, 10]` as moderate; `ε > 10` as weak-to-meaningless in a formal sense. The exact interpretation depends on the composition of queries and the mechanism. <!-- needs-research: avoid citing a single ε threshold as "regulator-acceptable"; this varies by jurisdiction, use case, and regulator. -->
+- `ε` (epsilon) is the **privacy budget**. Smaller is stronger. The literature loosely groups small-single-digit ε as "stronger", low-double-digit ε as "moderate", and larger values as progressively less meaningful in a formal sense — but there is no single regulator-acceptable threshold. Acceptable `ε` depends on jurisdiction, use case, sensitivity of the attribute, composition across queries, and the specific mechanism; the number lands on counsel and the privacy reviewer, not on this chapter.
 - `δ` (delta) is a small failure probability. Standard practice is `δ ≤ 1/|T|` so that `δ` does not permit leaking an entire record with reasonable probability.
 - The guarantee applies to the *training procedure*. Once trained with DP, the generator's outputs inherit the guarantee under post-processing.
 - Composition matters: running multiple DP mechanisms spends the budget. Pin your composition analysis.
@@ -59,8 +59,8 @@ The primary references:
 - **Project home:** <https://github.com/sdv-dev/SDV>. Docs: <https://docs.sdv.dev/>.
 - **Origin:** MIT DAI Lab; Patki, Wedge, Veeramachaneni. *The Synthetic Data Vault.* DSAA 2016. <https://dai.lids.mit.edu/>.
 - **What it does:** library-shaped, open-source. Models for tabular, time-series, and multi-table (relational) synthesis. Baseline models include CTGAN (Xu et al. 2019, *Modeling Tabular Data using Conditional GAN*), TVAE, PAR (time-series), HMA (hierarchical multi-table).
-- **DP posture:** SDV ships a DP-GAN model variant and integrates with `smartnoise-synth` for additional DP mechanisms. DP-CTGAN exists as a research-paper variant and in community forks. <!-- needs-research: confirm which DP models are first-class in the current SDV release and which require a plugin. -->
-- **Licence:** Business Source License (BSL 1.1) after a recent relicensing; verify the current terms of the specific release you use. <!-- needs-research: SDV's licence has changed; verify the terms for the version you install. -->
+- **DP posture:** the open-source community synthesizers (`GaussianCopulaSynthesizer`, `CTGANSynthesizer`, `TVAESynthesizer`) are not DP by default. DP variants such as `DPGCSynthesizer` / `DPGCFlexSynthesizer` are documented as SDV Enterprise / bundle features rather than community defaults; for a DP generator inside an open-source stack, team with `smartnoise-synth` or evaluate a DP-CTGAN-shaped variant from the research literature. Verify what is first-class versus licensed in the specific SDV release you install (<https://docs.sdv.dev/sdv/single-table-data/modeling/synthesizers>).
+- **Licence:** SDV is published under the **Business Source License 1.1**, which is explicitly "not an Open Source license" and converts to MIT after the change date defined in the LICENSE file (<https://github.com/sdv-dev/SDV/blob/main/LICENSE>). The terms differ from earlier MIT-era SDV releases, so verify the LICENSE shipped with the exact version you install.
 - **Scale:** library-scale. Fits datasets up to the order of millions of rows on a single machine; the larger relational cases require cluster execution.
 
 ### Gretel AI

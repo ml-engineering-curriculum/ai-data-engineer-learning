@@ -17,7 +17,7 @@ This chapter is not a line-by-line tutorial on either library. It is the shape o
 - **Project home:** <https://github.com/NVIDIA/NeMo-Curator>. Docs: <https://docs.nvidia.com/nemo/curator/>.
 - **Focus:** production-scale data curation and synthetic data generation for LLM training. NVIDIA's own Nemotron recipes are the reference workloads.
 - **Backing runtime:** Dask + RAPIDS for CPU/GPU pipeline work; integrates with NIM / Triton / vLLM for the generator-call side.
-- **Synthetic-data operators (as of the current major release):** `NemotronGenerator` (and adapter classes) implement Nemotron-style instruction, conversation, and preference-pair generation; dedicated helpers for Self-Instruct, open-ended Q&A, and knowledge-distillation workloads are exposed under the synthetic-data module. <!-- needs-research: confirm the exact class / module path for the current NeMo Curator release; the synthetic-data submodule has reorganised across versions. -->
+- **Synthetic-data operators (as of the current major release):** `nemo_curator.synthetic.NemotronGenerator` and its `AsyncNemotronGenerator` counterpart implement Nemotron-style instruction, conversation, and preference-pair generation; dedicated helpers for Self-Instruct, open-ended Q&A, and knowledge-distillation workloads are exposed under the same synthetic-data module. The submodule layout has reorganised across releases — pin the library version in the manifest and verify the exact import against your installed release (<https://github.com/NVIDIA-NeMo/Curator>).
 - **Licence:** Apache 2.0.
 
 ### Alibaba Data-Juicer
@@ -25,7 +25,7 @@ This chapter is not a line-by-line tutorial on either library. It is the shape o
 - **Project home:** <https://github.com/modelscope/data-juicer>. Paper: Chen, Yang, Li, Zheng, Dai, Ma, Shen, Liu, Chen, Yuan, Deng, Zhou, Zhang. *Data-Juicer: A One-Stop Data Processing System for Large Language Models.* arXiv 2309.02033 (SIGMOD 2024). <https://arxiv.org/abs/2309.02033>.
 - **Focus:** one-stop pre-training and alignment data processing. Synthetic-data generation is one capability among many; dedup, format normalisation, PII, and language filtering are first-class.
 - **Backing runtime:** Ray for distributed execution; local multiprocessing for smaller runs.
-- **Synthetic-data operators (as of the current release):** mappers in `data_juicer.ops.mapper` implement Self-Instruct, Evol-Instruct, and distillation operators; filter operators in `data_juicer.ops.filter` cover length, language, quality judge, and perplexity. <!-- needs-research: confirm exact op names for the current Data-Juicer release; the mapper naming has evolved. -->
+- **Synthetic-data operators (as of the current release):** mappers in `data_juicer.ops.mapper` implement Self-Instruct-shaped generation (`generate_qa_from_text_mapper`, `generate_qa_from_examples_mapper`), Evol-Instruct-shaped refinement (`optimize_qa_mapper`, `optimize_query_mapper`, `optimize_response_mapper`), QA calibration, and preference-pair construction (`pair_preference_mapper`); filter operators in `data_juicer.ops.filter` cover length, language, quality judge, and perplexity. Mapper naming has evolved — pin the release and check the operator list for the version you install (<https://datajuicer.github.io/data-juicer/en/main/docs/Operators.html>).
 - **Licence:** Apache 2.0.
 
 ## When the libraries pay off

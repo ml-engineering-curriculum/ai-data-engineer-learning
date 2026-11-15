@@ -113,7 +113,7 @@ The budget is enforced at the manifest level: every generation run carries a cou
 
 ### Why 2–3 is the usual cap
 
-Empirically (across the small number of published studies and widely-circulated internal reports), recursive iteration against a student policy shows diminishing returns past round 2–3 even when anchored, and shows measurable collapse past round 3–5 when poorly anchored. Treat 2–3 as the operating default; allow exceeding only with a Chapter 07 §"Lever 3" drift-metric release gate. <!-- needs-research: published empirical bounds on iteration count vary across papers and tasks; avoid committing to a single number. -->
+Published bounds on safe recursion depth vary by task, generator, anchor ratio, and drift metric, so no single number generalises. The practical rule across the Shumailov et al. (2023) collapse paper and the downstream replication literature is: diminishing returns set in within a small number of rounds even when anchored, and measurable collapse arrives sooner than teams expect when anchoring is weak. Treat a low single-digit default as the operating assumption; allow exceeding it only with a Chapter 07 §"Lever 3" drift-metric release gate. Pin the bound used in the manifest and justify it from your own drift data.
 
 ## Lever 3 — round-over-round drift measurement
 

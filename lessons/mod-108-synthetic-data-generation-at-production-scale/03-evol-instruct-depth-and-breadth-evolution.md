@@ -178,8 +178,8 @@ Both NeMo Curator and Data-Juicer ship an Evol-Instruct-shaped operator in their
 
 Rough mapping:
 
-- **NeMo Curator** — `nemo_curator.synthetic.NemotronGenerator` (and friends) offers the generation-plus-elimination pattern with pluggable operators; the Evol-Instruct operator set is implemented against it. <!-- needs-research: confirm exact class / module path for the current NeMo Curator release, since the synthetic-data submodule has reorganised across versions. -->
-- **Data-Juicer** — ships Self-Instruct and Evol-Instruct as data-recipe mappers under `data_juicer.ops.mapper`. <!-- needs-research: confirm exact op names for the current Data-Juicer release, since the mapper naming has evolved. -->
+- **NeMo Curator** — `nemo_curator.synthetic.NemotronGenerator` (and its `AsyncNemotronGenerator` counterpart) offers the generation-plus-elimination pattern with pluggable operators; the Evol-Instruct operator set is implemented against it. Pin the library version in the manifest; the submodule layout has reorganised across releases, so verify the exact import against the version you install (<https://github.com/NVIDIA-NeMo/Curator>).
+- **Data-Juicer** — ships Self-Instruct-shaped generation (`GenerateQAFromExamplesMapper`, op name `generate_qa_from_examples_mapper`) and Evol-Instruct-shaped refinement (`OptimizeQAMapper` / `OptimizeQueryMapper` / `OptimizeResponseMapper`) as data-recipe mappers under `data_juicer.ops.mapper`. Mapper naming has evolved; check the operator list for the release you install (<https://datajuicer.github.io/data-juicer/en/main/docs/Operators.html>).
 
 ## The evolution manifest
 

@@ -50,14 +50,14 @@ Parts 1–4 were published in 2024 and Part 5 in 2025; verify the current editio
 - **Colorado SB 24-205 (Colorado AI Act)** — signed May 17, 2024. Original 1 February 2026 effective date pushed to 30 June 2026 by SB25B-004 (signed 28 August 2025), then superseded by **SB 26-189** (signed 14 May 2026) which substantially revised the regime with a 1 January 2027 effective date. Text and status of each: <https://leg.colorado.gov/bills/sb24-205>. Colorado Attorney General implementing rulemaking under the original SB 24-205 did not complete before replacement; check <https://coag.gov/> for rules in force at read time.
 - **NYC Local Law 144** on Automated Employment Decision Tools — effective July 5, 2023. NYC Department of Consumer and Worker Protection (DCWP) implementing rules: <https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page>.
 
-<!-- needs-research: additional US state regimes (Utah AI Policy Act, Illinois HB 3773, Texas DPSA, Virginia CDPA, Connecticut CTDPA, Oregon OCPA, Montana MCDPA, etc.) land primarily on deployers; verify active list at read time. -->
+- **Additional US state regimes landing primarily on deployers** — notably the **Utah AI Policy Act** (SB 149, eff. 1 May 2024, amended by SB 226 eff. 7 May 2025); **Illinois HB 3773** amending the Illinois Human Rights Act for AI in employment decisions (eff. 1 Jan 2026); **Texas Responsible AI Governance Act** (HB 149 / TRAIGA, signed 22 June 2025, eff. 1 Jan 2026); and comprehensive state consumer-privacy laws with profiling / automated-decision-making provisions — **Texas DPSA**, **Virginia CDPA**, **Connecticut CTDPA**, **Oregon OCPA**, **Montana MCDPA**. The state landscape evolves quickly; verify the active list at read time.
 
 ## Opt-out signalling and provenance standards
 
 - **RFC 9309** — Robots Exclusion Protocol. <https://www.rfc-editor.org/rfc/rfc9309>.
 - **ai.txt** — community-specified AI-crawler opt-out convention. Primary site: <https://site.spawning.ai/spawning-ai-txt> (publisher-maintained).
 - **llms.txt** — community-specified LLM-facing content convention. <https://llmstxt.org/>.
-- **IETF AI Preferences (ai-pref) working group** — standards-track evolution of AI opt-out signalling. <https://datatracker.ietf.org/wg/aipref/about/>. <!-- needs-research: verify published RFCs, drafts, and status at read time. -->
+- **IETF AI Preferences (ai-pref) working group** — standards-track evolution of AI opt-out signalling. <https://datatracker.ietf.org/wg/aipref/about/>. As of November 2026 the WG has two active core Internet-Drafts (`draft-ietf-aipref-vocab` — a usage-preference vocabulary; `draft-ietf-aipref-attach` — how to associate preferences with HTTP content) and no published RFC yet; verify current revision and status at read time.
 - **C2PA** — Coalition for Content Provenance and Authenticity, Content Credentials specification: <https://c2pa.org/specifications/>.
 
 ## Documentation templates and SBOM standards

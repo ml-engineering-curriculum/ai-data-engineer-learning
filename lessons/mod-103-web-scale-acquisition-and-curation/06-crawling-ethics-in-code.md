@@ -158,9 +158,7 @@ Two operational notes:
 | EU DSM Article 4 TDM reservation | Rightholder opt-out in machine-readable form (typically `robots.txt` or `ai.txt` per the EU AI Office GPAI Code of Practice) | Jurisdictionally-conditioned; see mod-102 for the legal shape | Directive (EU) 2019/790 Art. 4; EU AI Office guidance |
 | C2PA Content Credentials | Embedded manifest in file metadata (images primarily; text support emerging) | C2PA SDK verification | C2PA specification <https://c2pa.org/specifications/> |
 
-The IETF `aipref` working group (<https://datatracker.ietf.org/wg/aipref/about/>) is formalising the above as standards-track; verify the published RFCs and drafts at read time.
-
-<!-- needs-research: once IETF aipref produces an RFC, cite it directly; current form is draft. -->
+The IETF `aipref` working group (<https://datatracker.ietf.org/wg/aipref/about/>) is formalising the above as standards-track. As of this writing no RFC has been published; the two active working-group drafts are `draft-ietf-aipref-vocab` (<https://datatracker.ietf.org/doc/draft-ietf-aipref-vocab/>) and `draft-ietf-aipref-attach` (<https://datatracker.ietf.org/doc/draft-ietf-aipref-attach/>). Re-verify at read time and prefer any published RFC over these drafts once one appears.
 
 ## The "my slice is CC, CC already handled robots" fallacy
 

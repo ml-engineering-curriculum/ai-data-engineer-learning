@@ -1,3 +1,5 @@
-# Data Sourcing, Licensing, Consent, and Provenance Engineering quizzes
+# Quizzes for mod-102-data-sourcing-licensing-and-provenance
 
-Authored under the autonomous fill-in loop.
+Knowledge checks for the module. Each quiz tests whether you can *use* the sourcing, licensing, opt-out, documentation, and provenance artifacts as an engineer — pick the right source type for an objective, translate a licence clause into a `LicenseGate` decision, honour a stack of opt-out signals correctly, route a legal question to the right role — rather than recite wording.
+
+- [Quiz 01 — Sourcing, Licensing, Opt-Outs, Documentation, and Provenance](quiz-01-sourcing-licensing-opt-outs-and-provenance.md) — 12 multiple-choice questions spanning Chapters 01–07 (five canonical source types and the selection matrix, the CC / OSS / proprietary / ToS / public-domain licence matrix and the allowlist / denylist policy, robots.txt per RFC 9309 and the AI-specific user agents and the `ai.txt` / `llms.txt` / `noai` / C2PA signal stack, EU DSM Article 4 and the US copyright posture and the legal deferral contract, Datasheets + Data Statements + Nutrition Labels + Croissant + Hugging Face cards, CycloneDX ML-BOM + SPDX 3.0 AI profile + C2PA Content Credentials, and the DPIA / data-risk-register / Article 53(1)(d) peer handoffs).

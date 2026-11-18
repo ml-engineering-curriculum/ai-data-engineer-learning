@@ -137,9 +137,7 @@ The system prompt pins three operational decisions:
 
 ### Prompt-cache the system prompt
 
-The LLM detector runs the same system prompt against millions of `(span, item)` pairs. Enable prompt caching on the system block so the first-token cost is amortised across the batch. Without caching, the detector is 3–5× more expensive than it needs to be.
-
-<!-- needs-research: confirm current Claude prompt-caching ergonomics (cache_control, breakpoints, TTL) at authoring time — see the Anthropic prompt caching docs. -->
+The LLM detector runs the same system prompt against millions of `(span, item)` pairs. Enable prompt caching on the system block so the first-token cost is amortised across the batch. Without caching, the detector is 3–5× more expensive than it needs to be. The current Claude API ergonomic is a `cache_control: {type: "ephemeral"}` field on the cacheable content block, with up to **4 breakpoints** per request and a TTL of either 5 minutes (default) or 1 hour (`"ttl": "1h"`); see the [Anthropic prompt-caching docs](https://docs.claude.com/en/docs/build-with-claude/prompt-caching) for the current parameter set.
 
 ### Agreement and double-coding
 

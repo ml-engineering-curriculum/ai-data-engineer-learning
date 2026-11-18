@@ -36,9 +36,7 @@ This is the table-stakes list for an open LLM release as of 2026. It is not exha
 - **Normalisation pitfalls:**
   - Letters `A/B/C/D` prefixes are often re-templated by the harness (`(A)`, `A.`, `A)`). An n-gram detector that keys on the raw letters will miss items rendered with the alternative template.
   - Four choices are often reshuffled during few-shot exemplar construction. The *question stem* is the stable key; the choice set is not.
-- **Variants to track:** MMLU-Pro (Wang et al. 2024 — 10-choice harder set) and MMLU-Redux (TIGER-Lab — corrected labels). If the release-claim benchmark is MMLU-Pro, the firewall must defend MMLU-Pro's test split, not the original.
-
-<!-- needs-research: confirm MMLU-Pro and MMLU-Redux canonical repos + HF revision at authoring time. Both are post-2024 artifacts that move. -->
+- **Variants to track:** MMLU-Pro (Wang et al. 2024 — 10-choice harder set; code at <https://github.com/TIGER-AI-Lab/MMLU-Pro>, HF at <https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro>, paper arXiv 2406.01574) and MMLU-Redux (Gema et al. 2024 "Are We Done with MMLU?", Edinburgh — manually re-annotated labels; code at <https://github.com/aryopg/mmlu-redux>, HF at <https://huggingface.co/datasets/edinburgh-dawg/mmlu-redux-2.0>, paper arXiv 2406.04127). Both are post-2024 artifacts whose HF revision hashes shift — always pin a revision in the manifest. If the release-claim benchmark is MMLU-Pro, the firewall must defend MMLU-Pro's test split, not the original.
 
 ### GSM8K — Grade School Math 8K
 

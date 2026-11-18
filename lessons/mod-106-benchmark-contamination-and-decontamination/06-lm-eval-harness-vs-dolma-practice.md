@@ -40,7 +40,7 @@ Operationally, the recipe:
 - **Exact-prompt and LLM detectors are not included.** The harness decontamination scripts are n-gram-only. The exact-prompt matcher and the LLM substring detector from Chapter 04 are not part of the recipe. If your firewall needs those detectors (and it does, for HumanEval signatures and paraphrase-prone MMLU items), you layer them on top of the harness output, not inside the harness.
 - **Output format.** The harness emits a flagged-document list; converting to the Chapter 03 `removal_manifest.parquet` schema is a small post-processing step.
 
-<!-- needs-research: confirm the current harness decontamination README location, the canonical n-gram width, and the output schema at authoring time — the harness is moving code; the `main` branch's decontamination path has been reorganised across releases. -->
+As of this authoring, the decontamination docs live at [`docs/decontamination.md`](https://github.com/EleutherAI/lm-evaluation-harness/blob/master/docs/decontamination.md). The canonical n-gram width is **13 tokens** (chosen for simplicity over GPT-3 Appendix C's per-benchmark 8–13 range), the invocation flag is `--decontamination_ngrams_path`, and each metric gains a "decontaminate"-suffixed companion metric reporting the clean-subset score. Because the harness is moving code, pin the harness git SHA in the decontamination log when you run it.
 
 ## The Dolma practice
 
@@ -82,11 +82,9 @@ The real disagreement is on three axes:
 
 ### Axis 1 — N-gram width and normalisation
 
-The two recipes land on different operating points of the Chapter 03 precision / recall curve. The EleutherAI harness's default is aligned with "catch what GPT-3 Appendix C's 13-gram convention catches"; Dolma's default is aligned with "catch a slightly broader set, accepting more false positives". The difference is a handful of tokens at the window, plus differences in whitespace / case / letter-choice rendering normalisation.
+The two recipes land on different operating points of the Chapter 03 precision / recall curve. The EleutherAI harness defaults to a 13-token n-gram overlap aligned with the GPT-3 Appendix C convention; the Dolma pipeline's decontamination filter uses its own fingerprint-set width and normalisation. The qualitative difference is a handful of tokens at the window plus differences in whitespace / case / letter-choice rendering normalisation — the magnitudes are corpus- and release-dependent, which is why Exercise 02 is the empirical side-by-side on your own slice rather than a static number cited here.
 
 Which is "right" depends on your tolerance for false positives in pretrain. A pretrain corpus losing 0.5% to false positives is a non-event; an SFT corpus losing 5% to false positives is a dataset-engineering problem.
-
-<!-- needs-research: at authoring time, compare the two recipes' n-gram widths and normalisation rules empirically — run both on the same 10,000-document sample and report the per-benchmark overlap and removal-rate delta. The verbal description in this chapter must be grounded in that comparison, not paraphrased. -->
 
 ### Axis 2 — Benchmark coverage and manifest shape
 

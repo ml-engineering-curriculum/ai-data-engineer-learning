@@ -22,9 +22,7 @@ GPT-3's Appendix C formalised the convention most of the industry still follows:
 3. A test item is "contaminated" if **any** of its windows matches. The *clean subset* is the complement.
 4. Report the headline metric and the clean-subset metric side-by-side. A gap between them is prima facie evidence of contamination-driven inflation.
 
-The n-gram width is a knob — not a universal constant. GPT-3 used 13 tokens (adjusted per benchmark where defaults produced obvious false positives on short items). Subsequent recipes have landed on 8-, 10-, 13-, or 50-character windows depending on tokenisation and domain.
-
-<!-- needs-research: cite GPT-3 Appendix C's exact per-benchmark n-gram widths and overlap thresholds verbatim at authoring time. The "13-gram" figure is load-bearing and should be verified against the paper, not paraphrased. -->
+The n-gram width is a knob — not a universal constant. GPT-3 Appendix C used a **13-gram** window, defining a "gram" as a lowercase, whitespace-delimited word with no punctuation; test examples shorter than 13 grams are matched against the full example, and 13-grams matching more than 10 training documents are ignored as likely-boilerplate ([Brown et al. 2020](https://arxiv.org/abs/2005.14165), App. C). Subsequent recipes have landed on different operating points — 8-gram token windows for LLaMA-3, a 50-character window in the GPT-4 technical report — depending on tokenisation and domain.
 
 ## Choosing the width: the two failure modes
 

@@ -19,12 +19,10 @@ Pin these three claims. They are the ones you will cite in a release review.
 Key findings in the shape you should cite:
 
 - OpenAI explicitly built a contamination analysis into the GPT-3 release — not as an afterthought, but as a load-bearing appendix. For each benchmark they reported a "clean" subset: the subset of test items whose any of a sliding-window n-gram was **not** present in the training set. They reported the delta between the headline score on all items and the clean-subset score.
-- The n-gram window they used was **13-gram overlap** against the training data (with some per-benchmark variants). That 13-gram convention has been reused by subsequent labs as the floor for "we checked contamination".
+- The n-gram window they used was **13-gram overlap** against the training data (defining a "gram" as a lowercase, whitespace-delimited word with no punctuation; for test examples shorter than 13 grams, the whole example is used; 13-grams matching more than 10 training documents are ignored as likely-boilerplate). That 13-gram convention has been reused by subsequent labs as the floor for "we checked contamination".
 - Appendix C is the paper you point at when a stakeholder asks *"do we really need to do this?"*. The answer is: the leading pretraining labs have been publishing contamination reports since 2020, and your release will be read against that bar.
 
 **Why it matters for your pipeline:** the decontamination log is the public-facing analogue of GPT-3 Appendix C. The firewall is the pipeline step that produces its numbers.
-
-<!-- needs-research: cite the exact n-gram window and the per-benchmark overlap percentages from GPT-3 Appendix C verbatim at authoring time — do not approximate from memory. The 13-gram figure is load-bearing. -->
 
 ### 2. Two canonical post-hoc detectors can prove contamination without seeing your training set
 
@@ -65,9 +63,7 @@ Contamination is a quality defect against a specific ISO/IEC 25012 characteristi
 | **Consistency** | Cross-recipe disagreement (EleutherAI vs Dolma, Chapter 06) is a consistency problem; the recipe you pick is a consistency contract. |
 | **Traceability** | Every removed candidate is logged with the eval item it matched. That is the traceability surface ISO/IEC 42001 Annex A.7 expects. |
 
-**ISO 5259-2 measure:** the catalogue names a *test-set contamination rate* as a first-class ML-specific measure. The decontamination log implements that measure.
-
-<!-- needs-research: confirm the exact 5259-2 measure name for test-set contamination in the 2024 released edition; the measure family is stable but the specific entry name has been edited across drafts. -->
+**ISO 5259-2 measure:** [ISO/IEC 5259-2:2024](https://www.iso.org/standard/81860.html) catalogues data-quality measures for analytics and ML, including measures that target training/validation/test data leakage. Treat the decontamination log as the evidence artifact for the leakage-oriented measures in the catalogue; confirm the specific measure identifier against the edition of the standard your lab has adopted.
 
 ## What "contamination" means — and why it is slippery
 

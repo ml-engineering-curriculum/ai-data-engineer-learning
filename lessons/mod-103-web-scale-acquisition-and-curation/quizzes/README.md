@@ -1,3 +1,5 @@
-# Web-Scale Data Acquisition and Curation Pipelines quizzes
+# Quizzes for mod-103-web-scale-acquisition-and-curation
 
-Authored under the autonomous fill-in loop.
+Knowledge checks for the module. Each quiz tests whether you can *use* the Common Crawl acquisition + CCNet-style curation operators as an engineer — pick the right WARC / WAT / WET for a job, reason about why CCNet dedups paragraphs within a shard rather than documents across the snapshot, read a reference pipeline's design choices (Dolma, RedPajama-Data v2, FineWeb / FineWeb-Edu, The Pile), pick an operator library for a specific slice, place the ethics check at the correct stage, and hand off cleanly to `training-pipeline-engineer` — rather than recite wording.
+
+- [Quiz 01 — Web-Scale Acquisition and Curation](quiz-01-web-scale-acquisition-and-curation.md) — 12 multiple-choice questions spanning Chapters 01–07 (WARC / WAT / WET and the columnar index and the slice-as-predicate definition, CCNet's paragraph-SHA dedup and FastText `lid.176` and KenLM percentile tiering and the four documented omissions, trafilatura vs resiliparse and the joint C4 / RefinedWeb lesson on WET, Dolma's tagger / filter separation and RedPajama-Data v2's signal-per-document extreme and FineWeb-Edu's learned classifier replacement, Data-Juicer vs NeMo Curator vs Dolma toolkit vs Ray Data routing, the three-moment principle and why acquire-stage opt-out enforcement is non-negotiable, and the Chapter 07 three-artifact hand-off with shard discipline).
